@@ -1,7 +1,7 @@
 import { createStackNavigator } from "react-navigation-stack";
 import { createAppContainer } from "react-navigation";
 import { ScanToken } from "../screen/inspector/scanToken";
-import { Header } from "../component/header/inspectorHeader";
+import { Header } from "../component/header/commonHeader";
 
 const screens = {
   "Scan Token": {

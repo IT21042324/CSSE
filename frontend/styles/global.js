@@ -1,4 +1,5 @@
 import { StyleSheet, StatusBar } from "react-native";
+import { fontSize, fontStyle } from "../contants/globalConstants";
 
 export const globalStyles = StyleSheet.create({
   container: {
@@ -6,9 +7,14 @@ export const globalStyles = StyleSheet.create({
     flex: 1,
   },
   titleText: {
-    fontFamily: "ubuntu-bold",
+    fontFamily: fontStyle.titleText,
     fontSize: 20,
     color: "#333",
+  },
+  subTitleText: {
+    fontFamily: fontStyle.subTitleText,
+    fontSize: fontSize.medium,
+    color: "black",
   },
   errorText: {
     color: "crimson",

@@ -1,11 +1,11 @@
-import { View, StyleSheet, Text } from "react-native";
+import { View, StyleSheet, Text, Image } from "react-native";
 import { globalStyles } from "../../styles/global";
 
 export const Header = ({ title }) => {
   return (
     <View style={styles.header}>
-      <View style={styles.icon}>
-        {/* <HeaderMenuOptions title={title} /> */}
+      <View style={styles.logoContainer}>
+        <Image source={require("../../assets/logo.png")} style={styles.logo} />
       </View>
       <View>
         <Text style={globalStyles.titleText}>{title}</Text>
@@ -25,8 +25,17 @@ const styles = StyleSheet.create({
     fontSize: 20,
     letterSpacing: 1,
   },
-  icon: {
+  logoContainer: {
     position: "absolute",
+    right: 0,
+    height: "100%",
+    alignItems: "center",
+    justifyContent: "center",
+    width: 40,
+  },
+  logo: {
+    height: "280%",
+    width: "100%",
     right: 0,
   },
 });
