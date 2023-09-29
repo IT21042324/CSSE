@@ -1,4 +1,5 @@
 import { View, StyleSheet, Text } from "react-native";
+import { globalStyles } from "../../styles/global";
 
 export const Header = ({ title }) => {
   return (
@@ -7,7 +8,7 @@ export const Header = ({ title }) => {
         {/* <HeaderMenuOptions title={title} /> */}
       </View>
       <View>
-        <Text style={styles.headerText}>{title}</Text>
+        <Text style={globalStyles.titleText}>{title}</Text>
       </View>
     </View>
   );
@@ -21,14 +22,11 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   headerText: {
-    fontWeight: "bold",
     fontSize: 20,
-    color: "white",
     letterSpacing: 1,
   },
   icon: {
     position: "absolute",
     right: 0,
-    color: "white",
   },
 });

@@ -1,5 +1,5 @@
 import { Text } from "react-native";
 
 export const ScanToken = () => {
-  <Text>Scan Token Page</Text>;
+  return <Text>Scan Token Page</Text>;
 };
