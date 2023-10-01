@@ -1,24 +1,31 @@
 import { StyleSheet, StatusBar } from "react-native";
-import { fontSize, fontStyle } from "../contants/globalConstants";
+import {
+  colorVariants,
+  flexValues,
+  fontFamily,
+  fontSize,
+  fontWeight,
+  margin,
+} from "../contants/globalConstants";
 
 export const globalStyles = StyleSheet.create({
   container: {
-    backgroundColor: "#fff",
-    flex: 1,
+    backgroundColor: colorVariants.white,
+    flex: flexValues.full,
   },
   titleText: {
-    fontFamily: fontStyle.titleText,
-    fontSize: 20,
-    color: "#333",
+    fontFamily: fontFamily.titleText,
+    fontSize: fontSize.large,
+    color: colorVariants.darkGray,
   },
   subTitleText: {
-    fontFamily: fontStyle.subTitleText,
+    fontFamily: fontFamily.subTitleText,
     fontSize: fontSize.medium,
-    color: "black",
+    color: colorVariants.black,
   },
   errorText: {
-    color: "crimson",
-    fontWeight: "bold",
-    marginTop: 2,
+    color: colorVariants.crimson,
+    fontWeight: fontWeight.bold,
+    marginTop: margin.formErrorText,
   },
 });

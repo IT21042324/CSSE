@@ -10,8 +10,8 @@ import {
   colorVariants,
   commonValues,
   flexDirections,
+  fontFamily,
   fontSize,
-  fontStyle,
   fontWeight,
   margin,
   padding,
@@ -75,7 +75,7 @@ const styles = StyleSheet.create({
   },
   singleOptionTextColor: {
     color: colorVariants.white,
-    fontStyle: fontStyle.inspectorOptionsText,
+    fontFamily: fontFamily.inspectorOptionsText,
     fontWeight: fontWeight.bold,
     fontSize: fontSize.medium,
   },

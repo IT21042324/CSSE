@@ -15,16 +15,23 @@ export const margin = {
   xLarge: 30,
   xxLarge: 36,
   xxxLarge: 50,
+  formErrorText: 2,
 };
 
 export const height = {
   qrContainer: "40%",
+  headerHeight: 60,
 };
 
-export const fontStyle = {
+export const fontFamily = {
   titleText: "ubuntu-bold",
   subTitleText: "ubuntu-regular",
   inspectorOptionsText: "ubuntu-regular",
+};
+
+export const fontStyle = {
+  normal: "normal",
+  italic: "italic",
 };
 
 export const fontWeight = {
@@ -43,7 +50,7 @@ export const fontSize = {
 
 export const colorVariants = {
   black: "black",
-  white: "white",
+  white: "#fff",
   dodgerblue: "dodgerblue",
   lightblue: "lightblue",
   green: "green",
@@ -51,6 +58,8 @@ export const colorVariants = {
   yellow: "yellow",
   blue: "blue",
   babyBlue: "#89CFF0",
+  crimson: "crimson",
+  darkGray: "#333",
 };
 
 export const heightVariants = {
@@ -87,4 +96,12 @@ export const flexDirections = {
 
 export const commonValues = {
   optionsBorderRadius: 15,
+};
+
+export const flexValues = {
+  full: 1,
+  quarter: 0.2,
+  half: 0.5,
+  threeQuarter: 0.7,
+  none: 0,
 };

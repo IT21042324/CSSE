@@ -4,12 +4,12 @@ import {
   margin,
   padding,
   colorVariants,
-  fontStyle,
   fontSize,
   widthVariants,
   position,
   fontWeight,
   flexDirections,
+  fontFamily,
 } from "../../contants/globalConstants";
 import { InspectorFirstHalfComponent } from "../../component/inspector/inspectorImage";
 
@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
     justifyContent: position.center,
   },
   scanningProgressText: {
-    fontFamily: fontStyle.subTitleText,
+    fontFamily: fontFamily.subTitleText,
     fontSize: fontSize.large,
   },
   progressBar: {
