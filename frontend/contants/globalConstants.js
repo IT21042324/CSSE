@@ -6,10 +6,15 @@ export const padding = {
 };
 
 export const margin = {
+  xxxSmall: 6,
+  xxSmall: 10,
+  xSmall: 14,
   small: 18,
   medium: 22,
   large: 26,
-  extraLarge: 30,
+  xLarge: 30,
+  xxLarge: 36,
+  xxxLarge: 50,
 };
 
 export const height = {
@@ -19,6 +24,7 @@ export const height = {
 export const fontStyle = {
   titleText: "ubuntu-bold",
   subTitleText: "ubuntu-regular",
+  inspectorOptionsText: "ubuntu-regular",
 };
 
 export const fontWeight = {
@@ -59,6 +65,9 @@ export const position = {
   none: 0,
   center: "center",
   absolute: "absolute",
+  spaceAround: "space-around",
+  spaceBetween: "space-between",
+  flexEnd: "flex-end",
 };
 
 export const widthVariants = {
@@ -74,4 +83,8 @@ export const flexDirections = {
   rowReverse: "row-reverse",
   column: "column",
   columnReverse: "column-reverse",
+};
+
+export const commonValues = {
+  optionsBorderRadius: 15,
 };

@@ -11,29 +11,27 @@ import {
   fontWeight,
   flexDirections,
 } from "../../contants/globalConstants";
+import { InspectorFirstHalfComponent } from "../../component/inspector/inspectorImage";
 
 export const ScanToken = () => {
   const progressValue = "70%";
 
   return (
     <View style={styles.mainContainer}>
-      <View style={styles.inspectorImage}>
-        <Image
-          source={require("../../assets/inspector.png")}
-          style={styles.logo}
-        />
-      </View>
+      <InspectorFirstHalfComponent />
       <View style={styles.qrContainer}></View>
-      <View style={styles.qrProgress}>
-        <Text style={styles.scanningProgressText}>
-          QR Code Scanning In Progress..
-        </Text>
-      </View>
-      <View style={styles.progressBar}>
-        <View
-          style={[styles.progressBarAmount, { width: progressValue }]}
-        ></View>
-        <Text style={styles.progressBarAmountText}>{progressValue}</Text>
+      <View>
+        <View style={styles.qrProgress}>
+          <Text style={styles.scanningProgressText}>
+            QR Code Scanning In Progress..
+          </Text>
+        </View>
+        <View style={styles.progressBar}>
+          <View
+            style={[styles.progressBarAmount, { width: progressValue }]}
+          ></View>
+          <Text style={styles.progressBarAmountText}>{progressValue}</Text>
+        </View>
       </View>
     </View>
   );
@@ -42,11 +40,6 @@ const styles = StyleSheet.create({
   mainContainer: {
     margin: margin.small,
     flex: 1,
-  },
-  inspectorImage: {
-    alignItems: position.center,
-    justifyContent: position.center,
-    padding: padding.small,
   },
   qrContainer: {
     height: height.qrContainer,
