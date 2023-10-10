@@ -1,8 +1,15 @@
+import { Feather } from "@expo/vector-icons";
+import { Entypo } from "@expo/vector-icons";
+
 export const padding = {
+  xxxSmall: 6,
+  xxSmall: 10,
+  xSmall: 14,
   small: 18,
   medium: 22,
   large: 26,
   extraLarge: 30,
+  singleOptionPaddingTop: "5%",
 };
 
 export const margin = {
@@ -19,8 +26,25 @@ export const margin = {
 };
 
 export const height = {
-  qrContainer: "40%",
+  qrContainer: "50%",
   headerHeight: 60,
+  half: "50%",
+  full: "100%",
+  imageAndNameContainer: 90,
+  tokenStatusContainer: 80,
+};
+
+export const width = {
+  InspectionSingleOptionsWidth: 150,
+  half: "50%",
+  full: "100%",
+  qrScannerBtn: 200,
+  passengerIcon: 90,
+};
+
+export const borderRadius = {
+  passengerIcon: 200,
+  inquiryBtn: 200,
 };
 
 export const fontFamily = {
@@ -41,6 +65,7 @@ export const fontWeight = {
 export const fontSize = {
   xSmall: 10,
   small: 12,
+  mediumSmall: 14,
   medium: 16,
   large: 20,
   xLarge: 24,
@@ -60,6 +85,9 @@ export const colorVariants = {
   babyBlue: "#89CFF0",
   crimson: "crimson",
   darkGray: "#333",
+  gray: "gray",
+  platinumGray: "#E5E4E2",
+  whiteSmoke: "#f5f5f5",
 };
 
 export const heightVariants = {
@@ -104,4 +132,29 @@ export const flexValues = {
   half: 0.5,
   threeQuarter: 0.7,
   none: 0,
+};
+
+export const resizeMode = {
+  cover: "cover",
+  contain: "contain",
+  stretch: "stretch",
+  center: "center",
+  repeat: "repeat",
+};
+
+export const scanTokenPage = {
+  tokenValidationIconSuccess: (
+    <Feather
+      name="check-circle"
+      size={40}
+      style={{ color: colorVariants.green }}
+    />
+  ),
+  tokenValidationIconFailure: (
+    <Entypo
+      name="circle-with-cross"
+      size={40}
+      style={{ color: colorVariants.red }}
+    />
+  ),
 };

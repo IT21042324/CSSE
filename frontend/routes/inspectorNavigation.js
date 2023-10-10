@@ -10,13 +10,13 @@ const screens = {
   Inspection: {
     screen: inspectorLandingScreen,
     navigationOptions: {
-      headerTitle: () => <Header title={screenTitles.Inspection} />,
+      headerTitle: () => <Header title={screenTitles.inspection} />,
     },
   },
-  "Scan Token": {
+  ValidateToken: {
     screen: ScanToken,
     navigationOptions: {
-      headerTitle: () => <Header title={screenTitles.tokenValidation} />,
+      headerTitle: () => <Header title={screenTitles.validateToken} />,
     },
   },
 };
