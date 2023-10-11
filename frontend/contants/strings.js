@@ -21,3 +21,24 @@ export const ScanQRPageText = {
   tokenValidationFailureMessage: "Token is Invalid",
   issueInquiry: "Issue an Inquiry",
 };
+
+export const inquirySelectionOptions = [
+  { key: 1, value: "Inquiry" },
+  { key: 2, value: "Penalty" },
+];
+
+export const inquiryFormText = {
+  inquiryForm: "Inquiry Form",
+  name: "Name",
+  startingPoint: "Starting Point",
+  time: "Time",
+  date: "Date",
+  selectInquiryType: "Select Inquiry Type",
+  penalty: "Penalty",
+  penaltyAmount: "Penalty Amount",
+  inqDescription: "Inquiry Description",
+  submit: "Submit",
+  enterValidAmount: "Please enter a valid penalty amount",
+  enterInqType: "Please select an inquiry type",
+  enterInqDesc: "Please enter a valid description",
+};

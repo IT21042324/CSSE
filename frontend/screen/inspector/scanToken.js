@@ -28,6 +28,7 @@ import { useState } from "react";
 import { qrImage } from "../../assets/imageIndex";
 import { ScannedTokenDetailsContainer } from "../../component/ScannedTokenDetailsContainer";
 import { ScanQRPageText } from "../../contants/strings";
+import { InquryForm } from "../../component/inspector/inquiryForm";
 
 export const ScanToken = ({ navigation }) => {
   const [isCameraOpen, setIsCameraOpen] = useState(false);
@@ -44,68 +45,92 @@ export const ScanToken = ({ navigation }) => {
     console.log(data);
   };
 
+  const [modalVisible, setModalVisible] = useState(false);
+
+  const formHandler = (status) => {
+    setModalVisible(status);
+  };
+
   return (
-    <ScrollView contentContainerStyle={styles.mainContainer}>
-      <InspectorFirstHalfComponent />
-      <View style={styles.qrContainer}>
-        {isCameraOpen && <QrScannner onQRScanned={onQRScanned} />}
-        {!isCameraOpen && !isQrDetailsVisible && (
-          <Image
-            source={qrImage}
-            style={styles.qrImage}
-            resizeMode={resizeMode.stretch}
-          />
-        )}
-        {!isCameraOpen && isQrDetailsVisible && (
-          <ScannedTokenDetailsContainer dataFromQR={dataFromQR} />
-        )}
-      </View>
-
-      {isCameraOpen && (
-        <TouchableOpacity
-          style={styles.scanBtn}
-          onPress={() => qrBtnPressHandler(true)}
-        >
-          <Text style={styles.scanBtnText}>{ScanQRPageText.ScanQrBtnText}</Text>
-        </TouchableOpacity>
-      )}
-
-      {!isCameraOpen && !isQrDetailsVisible && (
-        <TouchableOpacity
-          style={styles.scanBtn}
-          onPress={() => qrBtnPressHandler(false)}
-        >
-          <Text style={styles.scanBtnText}>
-            {ScanQRPageText.closeScannerBtnText}
-          </Text>
-        </TouchableOpacity>
-      )}
-
-      {!isCameraOpen && isQrDetailsVisible && (
-        <View style={styles.tokenStatusContainer}>
-          <View style={styles.tokenStatusDetailsContainer}>
-            {dataFromQR.validInfo ? (
-              <>
-                {scanTokenPage.tokenValidationIconSuccess}
-                <Text style={styles.tokenStatusText}>
-                  {ScanQRPageText.tokenValidationSuccessMessage}
-                </Text>
-              </>
-            ) : (
-              <>
-                {scanTokenPage.tokenValidationIconFailure}
-                <Text style={styles.tokenStatusText}>
-                  {ScanQRPageText.tokenValidationFailureMessage}
-                </Text>
-              </>
+    <ScrollView
+      contentContainerStyle={{
+        ...styles.mainContainer,
+        justifyContent: modalVisible ? "center" : undefined,
+      }}
+    >
+      {modalVisible ? (
+        <InquryForm formHandler={formHandler} />
+      ) : (
+        <>
+          <InspectorFirstHalfComponent />
+          <View style={styles.qrContainer}>
+            {isCameraOpen && <QrScannner onQRScanned={onQRScanned} />}
+            {!isCameraOpen && !isQrDetailsVisible && (
+              <Image
+                source={qrImage}
+                style={styles.qrImage}
+                resizeMode={resizeMode.stretch}
+              />
+            )}
+            {!isCameraOpen && isQrDetailsVisible && (
+              <ScannedTokenDetailsContainer dataFromQR={dataFromQR} />
             )}
           </View>
-          <TouchableOpacity style={styles.inquiryBtn}>
-            <Text style={styles.inquiryBtnText}>
-              {ScanQRPageText.issueInquiry}
-            </Text>
-          </TouchableOpacity>
-        </View>
+
+          {isCameraOpen && (
+            <TouchableOpacity
+              style={styles.scanBtn}
+              onPress={() => qrBtnPressHandler(true)}
+            >
+              <Text style={styles.scanBtnText}>
+                {ScanQRPageText.ScanQrBtnText}
+              </Text>
+            </TouchableOpacity>
+          )}
+
+          {!isCameraOpen && !isQrDetailsVisible && (
+            <TouchableOpacity
+              style={styles.scanBtn}
+              onPress={() => qrBtnPressHandler(false)}
+            >
+              <Text style={styles.scanBtnText}>
+                {ScanQRPageText.closeScannerBtnText}
+              </Text>
+            </TouchableOpacity>
+          )}
+
+          {!isCameraOpen && isQrDetailsVisible && (
+            <View style={styles.tokenStatusContainer}>
+              <View style={styles.tokenStatusDetailsContainer}>
+                {dataFromQR.validInfo ? (
+                  <>
+                    {scanTokenPage.tokenValidationIconSuccess}
+                    <Text style={styles.tokenStatusText}>
+                      {ScanQRPageText.tokenValidationSuccessMessage}
+                    </Text>
+                  </>
+                ) : (
+                  <>
+                    {scanTokenPage.tokenValidationIconFailure}
+                    <Text style={styles.tokenStatusText}>
+                      {ScanQRPageText.tokenValidationFailureMessage}
+                    </Text>
+                  </>
+                )}
+              </View>
+              <TouchableOpacity
+                style={styles.inquiryBtn}
+                onPress={() => {
+                  formHandler(true);
+                }}
+              >
+                <Text style={styles.inquiryBtnText}>
+                  {ScanQRPageText.issueInquiry}
+                </Text>
+              </TouchableOpacity>
+            </View>
+          )}
+        </>
       )}
     </ScrollView>
   );

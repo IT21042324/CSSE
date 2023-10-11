@@ -1,5 +1,8 @@
 import { Feather } from "@expo/vector-icons";
 import { Entypo } from "@expo/vector-icons";
+import { AntDesign } from "@expo/vector-icons";
+
+import moment from "moment";
 
 export const padding = {
   xxxSmall: 6,
@@ -45,6 +48,7 @@ export const width = {
 export const borderRadius = {
   passengerIcon: 200,
   inquiryBtn: 200,
+  textInput: 5,
 };
 
 export const fontFamily = {
@@ -158,3 +162,17 @@ export const scanTokenPage = {
     />
   ),
 };
+
+export const inquiryForm = {
+  closeFormIcon: (
+    <AntDesign name="close" size={24} color={colorVariants.crimson} />
+  ),
+};
+
+export const borderWidth = {
+  formField: 1,
+  formOutset: 5,
+};
+
+export const currTime = moment().local().format("HH:mm A");
+export const currDate = moment().local().format("Do MMM YY");

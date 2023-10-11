@@ -53,8 +53,6 @@ export const ScannedTokenDetailsContainer = () => {
 const styles = StyleSheet.create({
   userInfoContainer: {
     flex: 1,
-    height: height.full,
-    width: width.full,
     backgroundColor: colorVariants.whiteSmoke,
   },
   passengerIcon: {
