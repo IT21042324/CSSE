@@ -35,6 +35,7 @@ export const height = {
   full: "100%",
   imageAndNameContainer: 90,
   tokenStatusContainer: 80,
+  logoHeight: "280%",
 };
 
 export const width = {

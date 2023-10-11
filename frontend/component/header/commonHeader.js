@@ -1,5 +1,11 @@
 import { View, StyleSheet, Text, Image } from "react-native";
 import { globalStyles } from "../../styles/global";
+import {
+  flexDirections,
+  height,
+  position,
+  width,
+} from "../../contants/globalConstants";
 
 export const Header = ({ title }) => {
   return (
@@ -16,26 +22,26 @@ export const Header = ({ title }) => {
 
 const styles = StyleSheet.create({
   header: {
-    width: "100%",
-    height: "100%",
-    flexDirection: "row",
-    alignItems: "center",
+    width: width.full,
+    height: height.full,
+    flexDirection: flexDirections.row,
+    alignItems: position.center,
   },
   headerText: {
     fontSize: 20,
     letterSpacing: 1,
   },
   logoContainer: {
-    position: "absolute",
+    position: position.absolute,
     right: 0,
-    height: "100%",
-    alignItems: "center",
-    justifyContent: "center",
+    height: height.full,
+    alignItems: position.center,
+    justifyContent: position.center,
     width: 40,
   },
   logo: {
-    height: "280%",
-    width: "100%",
-    right: 0,
+    height: height.logoHeight,
+    width: width.full,
+    right: position.none,
   },
 });

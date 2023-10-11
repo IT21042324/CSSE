@@ -5,6 +5,7 @@ import { Header } from "../component/header/commonHeader";
 import { inspectorLandingScreen } from "../screen/inspector/inspectorLanding";
 import { screenTitles } from "../contants/strings";
 import { colorVariants, height } from "../contants/globalConstants";
+import { FontAwesome } from "@expo/vector-icons";
 
 const screens = {
   Inspection: {
@@ -23,7 +24,6 @@ const screens = {
 
 const stackNavigator = createStackNavigator(screens, {
   defaultNavigationOptions: {
-    headerTintColor: colorVariants.white,
     headerStyle: {
       height: height.headerHeight,
     },
