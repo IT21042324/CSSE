@@ -36,6 +36,7 @@ export const height = {
   imageAndNameContainer: 90,
   tokenStatusContainer: 80,
   logoHeight: "280%",
+  seatHeight: 50,
 };
 
 export const width = {
@@ -44,12 +45,14 @@ export const width = {
   full: "100%",
   qrScannerBtn: 200,
   passengerIcon: 90,
+  seatWidth: 50,
 };
 
 export const borderRadius = {
   passengerIcon: 200,
   inquiryBtn: 200,
   textInput: 5,
+  busSeat: 10,
 };
 
 export const fontFamily = {

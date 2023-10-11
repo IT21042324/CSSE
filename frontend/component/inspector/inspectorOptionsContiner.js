@@ -18,12 +18,17 @@ import {
   position,
   width,
 } from "../../contants/globalConstants";
-import { inspectorLandingScreenOptions } from "../../contants/strings";
+import {
+  inspectorLandingScreenOptions,
+  screenHeadings,
+} from "../../contants/strings";
 
 export const InspectorOptionContainer = ({ navigation }) => {
   const onOptionSelectionHandler = (screen) => {
-    if (screen === "Token Validation") {
+    if (screen === screenHeadings.validateToken) {
       navigation.navigate("ValidateToken");
+    } else if (screen === screenHeadings.viewAllocation) {
+      navigation.navigate("ViewAllocation");
     }
   };
   return (

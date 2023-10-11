@@ -4,8 +4,8 @@ import { ScanToken } from "../screen/inspector/scanToken";
 import { Header } from "../component/header/commonHeader";
 import { inspectorLandingScreen } from "../screen/inspector/inspectorLanding";
 import { screenTitles } from "../contants/strings";
-import { colorVariants, height } from "../contants/globalConstants";
-import { FontAwesome } from "@expo/vector-icons";
+import { height } from "../contants/globalConstants";
+import { ViewAllocation } from "../screen/inspector/viewAllocation";
 
 const screens = {
   Inspection: {
@@ -18,6 +18,12 @@ const screens = {
     screen: ScanToken,
     navigationOptions: {
       headerTitle: () => <Header title={screenTitles.validateToken} />,
+    },
+  },
+  ViewAllocation: {
+    screen: ViewAllocation,
+    navigationOptions: {
+      headerTitle: () => <Header title={screenTitles.viewAllocation} />,
     },
   },
 };

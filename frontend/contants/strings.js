@@ -14,6 +14,11 @@ export const screenTitles = {
   viewRoute: "View Route",
 };
 
+export const screenHeadings = {
+  validateToken: "Token Validation",
+  viewAllocation: "View Allocation",
+};
+
 export const ScanQRPageText = {
   ScanQrBtnText: "Scan QR",
   closeScannerBtnText: "Close Scanner",
@@ -41,4 +46,12 @@ export const inquiryFormText = {
   enterValidAmount: "Please enter a valid penalty amount",
   enterInqType: "Please select an inquiry type",
   enterInqDesc: "Please enter a valid description",
+};
+
+export const busSeatString = {
+  seatNo: "Seat No",
+  status: "Status",
+  customer: "Customer",
+  startingPoint: "Starting Point",
+  time: "Time",
 };
