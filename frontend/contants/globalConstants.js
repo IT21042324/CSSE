@@ -46,6 +46,7 @@ export const width = {
   qrScannerBtn: 200,
   passengerIcon: 90,
   seatWidth: 50,
+  distanceLocation: 160,
 };
 
 export const borderRadius = {
@@ -59,6 +60,7 @@ export const fontFamily = {
   titleText: "ubuntu-bold",
   subTitleText: "ubuntu-regular",
   inspectorOptionsText: "ubuntu-regular",
+  backButtonText: "arOneSans-regular",
 };
 
 export const fontStyle = {
@@ -113,6 +115,7 @@ export const position = {
   spaceAround: "space-around",
   spaceBetween: "space-between",
   flexEnd: "flex-end",
+  right: "right",
 };
 
 export const widthVariants = {
@@ -140,6 +143,7 @@ export const flexValues = {
   half: 0.5,
   threeQuarter: 0.7,
   none: 0,
+  wrap: "wrap",
 };
 
 export const resizeMode = {

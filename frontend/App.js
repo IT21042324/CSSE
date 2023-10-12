@@ -14,6 +14,7 @@ const getFonts = () =>
   Font.loadAsync({
     "ubuntu-regular": require("./assets/fonts/Ubuntu-Regular.ttf"),
     "ubuntu-bold": require("./assets/fonts/Ubuntu-Bold.ttf"),
+    "arOneSans-regular": require("./assets/fonts/AROneSans-Regular.ttf"),
   });
 
 export default function App() {

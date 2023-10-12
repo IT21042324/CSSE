@@ -19,6 +19,7 @@ import {
   width,
 } from "../../contants/globalConstants";
 import {
+  ScreenKey,
   inspectorLandingScreenOptions,
   screenHeadings,
 } from "../../contants/strings";
@@ -26,9 +27,13 @@ import {
 export const InspectorOptionContainer = ({ navigation }) => {
   const onOptionSelectionHandler = (screen) => {
     if (screen === screenHeadings.validateToken) {
-      navigation.navigate("ValidateToken");
+      navigation.navigate(ScreenKey.ValidateToken);
     } else if (screen === screenHeadings.viewAllocation) {
-      navigation.navigate("ViewAllocation");
+      navigation.navigate(ScreenKey.ViewAllocation);
+    } else if (screen === screenHeadings.viewRoute) {
+      navigation.navigate(ScreenKey.ViewRoute);
+    } else if (screen === screenHeadings.distanceCaluclator) {
+      navigation.navigate(ScreenKey.DistanceCalculator);
     }
   };
   return (

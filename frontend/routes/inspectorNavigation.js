@@ -6,6 +6,8 @@ import { inspectorLandingScreen } from "../screen/inspector/inspectorLanding";
 import { screenTitles } from "../contants/strings";
 import { height } from "../contants/globalConstants";
 import { ViewAllocation } from "../screen/inspector/viewAllocation";
+import { ViewRoute } from "../screen/inspector/viewRoute";
+import { DistanceCalculator } from "../screen/inspector/distanceCalculator";
 
 const screens = {
   Inspection: {
@@ -24,6 +26,18 @@ const screens = {
     screen: ViewAllocation,
     navigationOptions: {
       headerTitle: () => <Header title={screenTitles.viewAllocation} />,
+    },
+  },
+  ViewRoute: {
+    screen: ViewRoute,
+    navigationOptions: {
+      headerTitle: () => <Header title={screenTitles.viewRoute} />,
+    },
+  },
+  DistanceCalculator: {
+    screen: DistanceCalculator,
+    navigationOptions: {
+      headerTitle: () => <Header title={screenTitles.distanceCaluclator} />,
     },
   },
 };
