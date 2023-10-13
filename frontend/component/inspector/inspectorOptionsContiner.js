@@ -1,9 +1,9 @@
 import {
+  FlatList,
+  StyleSheet,
   Text,
   TouchableOpacity,
   View,
-  StyleSheet,
-  FlatList,
 } from "react-native";
 import {
   colorVariants,

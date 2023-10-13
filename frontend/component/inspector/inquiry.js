@@ -1,7 +1,7 @@
 import React from "react";
-import { Modal, StyleSheet, Text, Pressable, View } from "react-native";
-import { InquryForm } from "./inquiryForm";
+import { Modal, Pressable, StyleSheet, Text, View } from "react-native";
 import { colorVariants } from "../../contants/globalConstants";
+import { InquryForm } from "./inquiryForm";
 
 const ModalContent = ({
   changeVisibility,

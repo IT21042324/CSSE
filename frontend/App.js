@@ -1,14 +1,13 @@
 import * as Font from "expo-font";
-
-import Toast from "react-native-toast-message";
-import { globalStyles } from "./styles/global";
-import Navigator from "./routes/inspectorNavigation";
-import { Layout as RapiLayout } from "react-native-rapi-ui";
-import { MenuProvider } from "react-native-popup-menu";
-import { ThemeProvider } from "react-native-elements";
-import { SafeAreaView } from "react-native";
-import { useState } from "react";
 import AppLoading from "expo-app-loading";
+import { useState } from "react";
+import { SafeAreaView } from "react-native";
+import { ThemeProvider } from "react-native-elements";
+import { MenuProvider } from "react-native-popup-menu";
+import { Layout as RapiLayout } from "react-native-rapi-ui";
+import Toast from "react-native-toast-message";
+import Navigator from "./routes/inspectorNavigation";
+import { globalStyles } from "./styles/global";
 
 const getFonts = () =>
   Font.loadAsync({

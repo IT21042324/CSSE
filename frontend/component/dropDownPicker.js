@@ -1,5 +1,5 @@
-import { SelectList } from "react-native-dropdown-select-list";
 import { useState } from "react";
+import { SelectList } from "react-native-dropdown-select-list";
 
 export const DropDown = ({
   data,

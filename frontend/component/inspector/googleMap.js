@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
-import MapView, { Marker, Polyline } from "react-native-maps";
-import { StyleSheet, View } from "react-native";
 import * as Location from "expo-location";
+import React, { useEffect, useState } from "react";
+import { StyleSheet, View } from "react-native";
+import MapView, { Marker } from "react-native-maps";
 
 // Factory function to create Marker
 const createMarker = (coordinate, title) => (

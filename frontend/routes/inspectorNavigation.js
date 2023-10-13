@@ -1,14 +1,14 @@
-import { createStackNavigator } from "react-navigation-stack";
 import { createAppContainer } from "react-navigation";
+import { createStackNavigator } from "react-navigation-stack";
 import { Header } from "../component/header/commonHeader";
-import { inspectorLandingScreen } from "../screen/inspector/inspectorLanding";
-import { screenTitles } from "../contants/strings";
 import { height } from "../contants/globalConstants";
+import { screenTitles } from "../contants/strings";
+import { DistanceCalculator } from "../screen/inspector/distanceCalculator";
+import { inspectorLandingScreen } from "../screen/inspector/inspectorLanding";
+import PurchaseCredits from "../screen/inspector/purchaseCredits";
+import ScanToken from "../screen/inspector/scanToken";
 import { ViewAllocation } from "../screen/inspector/viewAllocation";
 import { ViewRoute } from "../screen/inspector/viewRoute";
-import { DistanceCalculator } from "../screen/inspector/distanceCalculator";
-import ScanToken from "../screen/inspector/scanToken";
-import PurchaseCredits from "../screen/inspector/purchaseCredits";
 
 const screens = {
   Inspection: {

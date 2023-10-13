@@ -1,7 +1,4 @@
-import { Feather } from "@expo/vector-icons";
-import { Entypo } from "@expo/vector-icons";
-import { AntDesign } from "@expo/vector-icons";
-
+import { AntDesign, Entypo, Feather } from "@expo/vector-icons";
 import moment from "moment";
 
 export const padding = {

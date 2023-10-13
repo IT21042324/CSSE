@@ -1,15 +1,16 @@
+import { useState } from "react";
 import {
-  ScrollView,
-  Text,
-  View,
-  TouchableOpacity,
-  TextInput,
-  StyleSheet,
   ActivityIndicator,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
 } from "react-native";
 import { PurchaseCreditsText } from "../../contants/strings";
-import { useState } from "react";
 
+import Toast from "react-native-toast-message";
 import {
   borderWidth,
   colorVariants,
@@ -23,7 +24,33 @@ import {
   position,
   size,
 } from "../../contants/globalConstants";
-import Toast from "react-native-toast-message";
+
+// Factory function to create InputFieldRecord
+const createInputFieldRecord = (
+  keyText,
+  onChangeTextHandler,
+  defaultValue,
+  keyboardType = "default",
+  editable = true
+) => (
+  <View style={styles.inputFieldRecord}>
+    <View style={styles.inputFieldRecordKey}>
+      <Text style={styles.inputFieldRecordKeyText}>{keyText}</Text>
+    </View>
+
+    <View style={styles.inputFieldRecordValue}>
+      <TextInput
+        style={
+          editable ? styles.inputFieldRecordTextInput : styles.disabledTextField
+        }
+        onChangeText={onChangeTextHandler}
+        defaultValue={defaultValue?.toString()}
+        keyboardType={keyboardType}
+        editable={editable}
+      />
+    </View>
+  </View>
+);
 
 export default function PurchaseCredits({ navigation }) {
   const defaultCreditValue = navigation.getParam("credits") || 0;
@@ -40,62 +67,33 @@ export default function PurchaseCredits({ navigation }) {
     //then say navigation.navigate("Inspection");
     navigation.navigate("Inspection");
     Toast.show({
+      type: "success",
       text1: "Transaction Successful",
       text2: `${credits} Credits  Added to ${userName}`,
     });
+
+    //add a type:error toast as well
   };
 
   return (
     <ScrollView style={styles.distanceContainer}>
       <View style={styles.inputFieldContainer}>
-        <View style={styles.inputFieldRecord}>
-          <View style={styles.inputFieldRecordKey}>
-            <Text style={styles.inputFieldRecordKeyText}>
-              {PurchaseCreditsText.userId}
-            </Text>
-          </View>
-
-          <View style={styles.inputFieldRecordValue}>
-            <TextInput
-              style={styles.inputFieldRecordTextInput}
-              onChangeText={(text) => setUserName(text)}
-            />
-          </View>
-        </View>
-
-        <View style={styles.inputFieldRecord}>
-          <View style={styles.inputFieldRecordKey}>
-            <Text style={styles.inputFieldRecordKeyText}>
-              {PurchaseCreditsText.credits}
-            </Text>
-          </View>
-
-          <View style={styles.inputFieldRecordValue}>
-            <TextInput
-              style={styles.inputFieldRecordTextInput}
-              onChangeText={(text) => setCredits(text)}
-              defaultValue={defaultCreditValue?.toString()}
-              keyboardType="number-pad"
-            />
-          </View>
-        </View>
-
-        <View style={styles.inputFieldRecord}>
-          <View style={styles.inputFieldRecordKey}>
-            <Text style={styles.inputFieldRecordKeyText}>
-              {PurchaseCreditsText.amount}
-            </Text>
-          </View>
-
-          <View style={styles.inputFieldRecordValue}>
-            <TextInput
-              style={styles.disabledTextField}
-              onChangeText={(text) => setAmount(text)}
-              defaultValue={defaultAmountValue?.toString()}
-              editable={false}
-            />
-          </View>
-        </View>
+        {createInputFieldRecord(PurchaseCreditsText.userId, (text) =>
+          setUserName(text)
+        )}
+        {createInputFieldRecord(
+          PurchaseCreditsText.credits,
+          (text) => setCredits(text),
+          defaultCreditValue,
+          "number-pad"
+        )}
+        {createInputFieldRecord(
+          PurchaseCreditsText.amount,
+          (text) => setAmount(text),
+          defaultAmountValue,
+          "default",
+          false
+        )}
 
         {isLoading ? (
           <ActivityIndicator

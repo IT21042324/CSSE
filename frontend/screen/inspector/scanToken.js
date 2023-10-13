@@ -1,34 +1,34 @@
+import { useState } from "react";
 import {
-  Text,
-  View,
-  StyleSheet,
   Image,
-  TouchableOpacity,
   ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
 } from "react-native";
+import { qrImage } from "../../assets/imageIndex";
+import { ScannedTokenDetailsContainer } from "../../component/ScannedTokenDetailsContainer";
+import { InquryForm } from "../../component/inspector/inquiryForm";
+import { InspectorFirstHalfComponent } from "../../component/inspector/inspectorImage";
+import QrScannner from "../../component/qrScanner";
 import {
+  borderRadius,
+  colorVariants,
+  flexDirections,
+  flexValues,
+  fontFamily,
+  fontSize,
+  fontWeight,
   height,
   margin,
   padding,
-  colorVariants,
-  fontSize,
   position,
-  fontWeight,
-  flexDirections,
-  fontFamily,
-  width,
   resizeMode,
-  flexValues,
   scanTokenPage,
-  borderRadius,
+  width,
 } from "../../contants/globalConstants";
-import { InspectorFirstHalfComponent } from "../../component/inspector/inspectorImage";
-import QrScannner from "../../component/qrScanner";
-import { useState } from "react";
-import { qrImage } from "../../assets/imageIndex";
-import { ScannedTokenDetailsContainer } from "../../component/ScannedTokenDetailsContainer";
 import { ScanQRPageText } from "../../contants/strings";
-import { InquryForm } from "../../component/inspector/inquiryForm";
 
 const createButton = (onPressHandler, btnText) => (
   <TouchableOpacity style={styles.scanBtn} onPress={onPressHandler}>

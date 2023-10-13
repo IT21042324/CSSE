@@ -1,16 +1,15 @@
 import { Formik } from "formik";
+import { useState } from "react";
 import {
+  ActivityIndicator,
   Button,
   StyleSheet,
-  TextInput,
-  View,
-  ActivityIndicator,
   Text,
+  TextInput,
   TouchableOpacity,
+  View,
 } from "react-native";
-import { useState } from "react";
 import * as yup from "yup";
-import { globalStyles } from "../../styles/global";
 import {
   borderRadius,
   borderWidth,
@@ -25,11 +24,12 @@ import {
   padding,
   position,
 } from "../../contants/globalConstants";
-import { DropDown } from "../dropDownPicker";
 import {
   inquiryFormText,
   inquirySelectionOptions,
 } from "../../contants/strings";
+import { globalStyles } from "../../styles/global";
+import { DropDown } from "../dropDownPicker";
 
 const StoreSchema = yup.object({
   penaltyAmount: yup

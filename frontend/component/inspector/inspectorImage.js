@@ -1,5 +1,5 @@
-import { View, Image, StyleSheet } from "react-native";
-import { position, padding } from "../../contants/globalConstants";
+import { Image, StyleSheet, View } from "react-native";
+import { padding, position } from "../../contants/globalConstants";
 
 export const InspectorFirstHalfComponent = () => {
   return (

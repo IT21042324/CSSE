@@ -1,18 +1,18 @@
-import { Text, View, StyleSheet, Image } from "react-native";
+import { Image, StyleSheet, Text, View } from "react-native";
+import { passengerImage } from "../assets/imageIndex";
 import {
+  borderRadius,
+  colorVariants,
+  flexDirections,
+  fontFamily,
+  fontSize,
   height,
   margin,
   padding,
-  colorVariants,
-  borderRadius,
   position,
-  flexDirections,
-  fontFamily,
-  width,
   resizeMode,
-  fontSize,
+  width,
 } from "../contants/globalConstants";
-import { passengerImage } from "../assets/imageIndex";
 
 export const ScannedTokenDetailsContainer = () => {
   return (

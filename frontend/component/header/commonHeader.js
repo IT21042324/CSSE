@@ -1,11 +1,11 @@
-import { View, StyleSheet, Text, Image } from "react-native";
-import { globalStyles } from "../../styles/global";
+import { Image, StyleSheet, Text, View } from "react-native";
 import {
   flexDirections,
   height,
   position,
   width,
 } from "../../contants/globalConstants";
+import { globalStyles } from "../../styles/global";
 
 export const Header = ({ title }) => {
   return (

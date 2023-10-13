@@ -1,6 +1,6 @@
-import { Text, View, TouchableOpacity } from "react-native";
-import { ScreenKey, distanceInfo } from "../contants/strings";
+import { Text, TouchableOpacity, View } from "react-native";
 import { flexValues, position, width } from "../contants/globalConstants";
+import { ScreenKey, distanceInfo } from "../contants/strings";
 import {
   calculateJourneyFare,
   calculateRequiredCredits,

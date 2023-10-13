@@ -1,11 +1,12 @@
 import { useState } from "react";
 import {
   StyleSheet,
-  TouchableOpacity,
   Text,
+  TouchableOpacity,
   View,
   useWindowDimensions,
 } from "react-native";
+import Tooltip from "react-native-walkthrough-tooltip";
 import {
   borderRadius,
   colorVariants,
@@ -18,7 +19,6 @@ import {
   position,
   width,
 } from "../../contants/globalConstants";
-import Tooltip from "react-native-walkthrough-tooltip";
 import { busSeatString } from "../../contants/strings";
 
 export const BusSeat = ({ seatNo }) => {

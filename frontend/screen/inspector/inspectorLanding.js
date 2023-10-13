@@ -1,7 +1,7 @@
-import { View, StyleSheet } from "react-native";
+import { StyleSheet, View } from "react-native";
 import { InspectorFirstHalfComponent } from "../../component/inspector/inspectorImage";
-import { flexValues, margin } from "../../contants/globalConstants";
 import { InspectorOptionContainer } from "../../component/inspector/inspectorOptionsContiner";
+import { flexValues, margin } from "../../contants/globalConstants";
 
 export const inspectorLandingScreen = ({ navigation }) => {
   return (

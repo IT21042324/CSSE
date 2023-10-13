@@ -1,19 +1,19 @@
+import { useState } from "react";
 import {
-  View,
+  ScrollView,
   Text,
   TextInput,
   TouchableOpacity,
-  ScrollView,
+  View,
 } from "react-native";
+import Toast from "react-native-toast-message";
+import { MakeApiCall } from "../../api/apiCalls";
+import { DistanceInfo } from "../../component/distanceInfo";
 import {
   distanceCaluclator,
   distanceCaluclatorError,
 } from "../../contants/strings";
-import { useState } from "react";
-import { MakeApiCall } from "../../api/apiCalls";
 import { findObjectLength } from "../../miscellaneous/helper";
-import { DistanceInfo } from "../../component/distanceInfo";
-import Toast from "react-native-toast-message";
 import { styles } from "../../styles/distanceCalculator";
 
 export const DistanceCalculator = ({ navigation }) => {

@@ -1,10 +1,10 @@
-import { FlatList, View, StyleSheet } from "react-native";
-import { BusSeat } from "./busSeat";
+import { FlatList, StyleSheet, View } from "react-native";
 import {
   flexDirections,
   padding,
   position,
 } from "../../contants/globalConstants";
+import { BusSeat } from "./busSeat";
 
 export const BusSeatView = ({ seatInfo }) => {
   const { row } = seatInfo;
