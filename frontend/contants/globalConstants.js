@@ -98,6 +98,13 @@ export const colorVariants = {
   gray: "gray",
   platinumGray: "#E5E4E2",
   whiteSmoke: "#f5f5f5",
+  turquesa: "#468499",
+  lightGray: "#E6E6E3",
+};
+
+export const size = {
+  small: "small",
+  large: "large",
 };
 
 export const heightVariants = {

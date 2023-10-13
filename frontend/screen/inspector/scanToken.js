@@ -30,7 +30,13 @@ import { ScannedTokenDetailsContainer } from "../../component/ScannedTokenDetail
 import { ScanQRPageText } from "../../contants/strings";
 import { InquryForm } from "../../component/inspector/inquiryForm";
 
-export const ScanToken = ({ navigation }) => {
+const createButton = (onPressHandler, btnText) => (
+  <TouchableOpacity style={styles.scanBtn} onPress={onPressHandler}>
+    <Text style={styles.scanBtnText}>{btnText}</Text>
+  </TouchableOpacity>
+);
+
+export default function ScanToken({ navigation }) {
   const [isCameraOpen, setIsCameraOpen] = useState(false);
   const [isQrDetailsVisible, setIsQrDetailsVisible] = useState(true);
   const [dataFromQR, setDataFromQR] = useState({});
@@ -77,27 +83,18 @@ export const ScanToken = ({ navigation }) => {
             )}
           </View>
 
-          {isCameraOpen && (
-            <TouchableOpacity
-              style={styles.scanBtn}
-              onPress={() => qrBtnPressHandler(true)}
-            >
-              <Text style={styles.scanBtnText}>
-                {ScanQRPageText.ScanQrBtnText}
-              </Text>
-            </TouchableOpacity>
-          )}
+          {isCameraOpen &&
+            createButton(
+              () => qrBtnPressHandler(true),
+              ScanQRPageText.ScanQrBtnText
+            )}
 
-          {!isCameraOpen && !isQrDetailsVisible && (
-            <TouchableOpacity
-              style={styles.scanBtn}
-              onPress={() => qrBtnPressHandler(false)}
-            >
-              <Text style={styles.scanBtnText}>
-                {ScanQRPageText.closeScannerBtnText}
-              </Text>
-            </TouchableOpacity>
-          )}
+          {!isCameraOpen &&
+            !isQrDetailsVisible &&
+            createButton(
+              () => qrBtnPressHandler(false),
+              ScanQRPageText.closeScannerBtnText
+            )}
 
           {!isCameraOpen && isQrDetailsVisible && (
             <View style={styles.tokenStatusContainer}>
@@ -118,23 +115,17 @@ export const ScanToken = ({ navigation }) => {
                   </>
                 )}
               </View>
-              <TouchableOpacity
-                style={styles.inquiryBtn}
-                onPress={() => {
-                  formHandler(true);
-                }}
-              >
-                <Text style={styles.inquiryBtnText}>
-                  {ScanQRPageText.issueInquiry}
-                </Text>
-              </TouchableOpacity>
+              {createButton(
+                () => formHandler(true),
+                ScanQRPageText.issueInquiry
+              )}
             </View>
           )}
         </>
       )}
     </ScrollView>
   );
-};
+}
 
 const styles = StyleSheet.create({
   mainContainer: {

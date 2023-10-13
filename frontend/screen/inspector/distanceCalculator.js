@@ -1,22 +1,10 @@
 import {
-  StyleSheet,
   View,
   Text,
   TextInput,
   TouchableOpacity,
   ScrollView,
 } from "react-native";
-import {
-  borderWidth,
-  colorVariants,
-  flexDirections,
-  flexValues,
-  fontFamily,
-  fontSize,
-  fontWeight,
-  padding,
-  position,
-} from "../../contants/globalConstants";
 import {
   distanceCaluclator,
   distanceCaluclatorError,
@@ -26,8 +14,9 @@ import { MakeApiCall } from "../../api/apiCalls";
 import { findObjectLength } from "../../miscellaneous/helper";
 import { DistanceInfo } from "../../component/distanceInfo";
 import Toast from "react-native-toast-message";
+import { styles } from "../../styles/distanceCalculator";
 
-export const DistanceCalculator = () => {
+export const DistanceCalculator = ({ navigation }) => {
   const [origins, setOrigins] = useState("");
   const [destinations, setDestinations] = useState("");
   const [distanceInfo, setDistanceInfo] = useState({});
@@ -40,7 +29,6 @@ export const DistanceCalculator = () => {
       if (origins && destinations) {
         const distanceResults = await getDistance(origins, destinations);
         setDistanceInfo(distanceResults);
-        console.log(distanceResults);
 
         if (typeof distanceResults === "string") {
           Toast.show({
@@ -72,10 +60,11 @@ export const DistanceCalculator = () => {
 
   return (
     <ScrollView style={styles.distanceContainer}>
-      {isInfoResultsVisible ? (
+      {!isInfoResultsVisible ? (
         <DistanceInfo
           information={distanceInfo}
           backPressHandler={backPressHandler}
+          navigation={navigation}
         />
       ) : (
         <View style={styles.inputFieldContainer}>
@@ -113,50 +102,12 @@ export const DistanceCalculator = () => {
             style={styles.btnContainer}
             onPress={onPressHandler}
           >
-            <Text style={styles.btnContainerText}>Calculate Distance</Text>
+            <Text style={styles.btnContainerText}>
+              {distanceCaluclator.calculateDistance}
+            </Text>
           </TouchableOpacity>
         </View>
       )}
     </ScrollView>
   );
 };
-
-const styles = StyleSheet.create({
-  distanceContainer: {
-    flex: flexValues.full,
-    flexGrow: flexValues.full,
-  },
-  inputFieldContainer: {
-    padding: padding.small,
-    backgroundColor: colorVariants.white,
-  },
-  inputFieldRecord: {},
-  inputFieldRecordKey: {
-    paddingTop: padding.xxSmall,
-  },
-  inputFieldRecordValue: {
-    paddingBottom: padding.xxSmall,
-  },
-  inputFieldRecordKeyText: {
-    fontFamily: fontFamily.subTitleText,
-    fontSize: fontSize.medium,
-  },
-  inputFieldRecordTextInput: {
-    fontFamily: fontFamily.subTitleText,
-    fontSize: fontSize.large,
-    borderWidth: borderWidth.formField,
-    padding: padding.xxxSmall,
-  },
-  btnContainer: {
-    flexDirection: flexDirections.row,
-    justifyContent: position.center,
-    padding: padding.small,
-    backgroundColor: colorVariants.babyBlue,
-  },
-  btnContainerText: {
-    fontFamily: fontFamily.subTitleText,
-    fontSize: fontSize.medium,
-    color: colorVariants.white,
-    fontWeight: fontWeight.bold,
-  },
-});

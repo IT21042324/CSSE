@@ -3,6 +3,11 @@ import MapView, { Marker, Polyline } from "react-native-maps";
 import { StyleSheet, View } from "react-native";
 import * as Location from "expo-location";
 
+// Factory function to create Marker
+const createMarker = (coordinate, title) => (
+  <Marker coordinate={coordinate} title={title} />
+);
+
 export default function Maps() {
   const [location, setLocation] = useState(null);
 
@@ -49,8 +54,8 @@ export default function Maps() {
     <View style={styles.container}>
       {region && (
         <MapView style={styles.map} region={region}>
-          <Marker coordinate={region} title="Current Position" />
-          <Marker coordinate={destination} title="Destination" />
+          {createMarker(region, "Current Position")}
+          {createMarker(destination, "Destination")}
         </MapView>
       )}
     </View>

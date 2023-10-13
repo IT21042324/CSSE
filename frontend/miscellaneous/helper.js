@@ -6,7 +6,7 @@ export const calculateJourneyFare = (ticketAmount, distance) => {
   let distanceValue = parseFloat(distance);
 
   // ticketAmount is the amount per km.
-  return ticketAmount * distanceValue;
+  return `Rs. ${ticketAmount * distanceValue}`;
 };
 
 export const calculateRequiredCredits = (creditsPerKm, distance) => {

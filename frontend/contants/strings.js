@@ -12,6 +12,7 @@ export const screenTitles = {
   scanToken: "Scan Token",
   viewRoute: "View Travel Route",
   distanceCaluclator: "Distance Calculator",
+  purchaseCredits: "Purchase Credits",
 };
 
 export const screenHeadings = {
@@ -19,6 +20,7 @@ export const screenHeadings = {
   viewAllocation: "View Allocation",
   viewRoute: "View Travel Route",
   distanceCaluclator: "Distance Calculator",
+  purchaseCredits: "Purchase Credits",
 };
 
 export const ScreenKey = {
@@ -26,6 +28,7 @@ export const ScreenKey = {
   ViewAllocation: "ViewAllocation",
   ViewRoute: "ViewRoute",
   DistanceCalculator: "DistanceCalculator",
+  PurchaseCredits: "PurchaseCredits",
 };
 
 export const ScanQRPageText = {
@@ -34,6 +37,13 @@ export const ScanQRPageText = {
   tokenValidationSuccessMessage: "Token is Valid",
   tokenValidationFailureMessage: "Token is Invalid",
   issueInquiry: "Issue an Inquiry",
+};
+
+export const PurchaseCreditsText = {
+  userId: "User ID",
+  purchaseCredits: "Purchase Credits",
+  credits: "Credits",
+  amount: "Amount",
 };
 
 export const inquirySelectionOptions = [
@@ -68,6 +78,7 @@ export const busSeatString = {
 export const distanceCaluclator = {
   destinationAddress: "Destination Location",
   originAddress: "Origin Location",
+  calculateDistance: "Calculate Distance",
 };
 
 export const distanceCaluclatorError = {
@@ -83,4 +94,9 @@ export const distanceInfo = {
   credits: "Credits",
   amount: "Amount",
   status: "Status",
+  back: "Back",
+  notFound: " Not Found",
+  purchaseCredit: "Purchase Credits",
+  creditsPerKm: 50,
+  costPerKm: 50,
 };

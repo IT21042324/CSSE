@@ -1,26 +1,31 @@
-import { Text, View, StyleSheet, TouchableOpacity } from "react-native";
-import { distanceInfo } from "../contants/strings";
-import {
-  colorVariants,
-  flexDirections,
-  flexValues,
-  fontFamily,
-  fontSize,
-  margin,
-  padding,
-  position,
-  width,
-} from "../contants/globalConstants";
+import { Text, View, TouchableOpacity } from "react-native";
+import { ScreenKey, distanceInfo } from "../contants/strings";
+import { flexValues, position, width } from "../contants/globalConstants";
 import {
   calculateJourneyFare,
   calculateRequiredCredits,
 } from "../miscellaneous/helper";
+import { styles } from "../styles/distanceInfo";
 
-export const DistanceInfo = ({ information, backPressHandler }) => {
+export const DistanceInfo = ({ information, backPressHandler, navigation }) => {
+  const onPressHandler = () => {
+    navigation.navigate(ScreenKey.PurchaseCredits, {
+      ...information,
+      credits: calculateRequiredCredits(
+        distanceInfo.creditsPerKm,
+        information.distance
+      ),
+      amount: calculateJourneyFare(
+        distanceInfo.costPerKm,
+        information.distance
+      ),
+    });
+  };
+
   return (
     <View style={styles.infoContainer}>
       <TouchableOpacity style={styles.backContainer} onPress={backPressHandler}>
-        <Text style={styles.backIconText}>Back</Text>
+        <Text style={styles.backIconText}>{distanceInfo.back}</Text>
       </TouchableOpacity>
 
       <View style={styles.infoFieldRecord}>
@@ -41,7 +46,7 @@ export const DistanceInfo = ({ information, backPressHandler }) => {
               },
             ]}
           >
-            {information?.origin_addresses || " Not Found"}
+            {information?.origin_addresses || distanceInfo.notFound}
           </Text>
         </View>
       </View>
@@ -64,7 +69,7 @@ export const DistanceInfo = ({ information, backPressHandler }) => {
               },
             ]}
           >
-            {information?.destination_addresses || " Not Found"}
+            {information?.destination_addresses || distanceInfo.notFound}
           </Text>
         </View>
       </View>
@@ -78,7 +83,7 @@ export const DistanceInfo = ({ information, backPressHandler }) => {
 
         <View style={styles.inputFieldRecordValue}>
           <Text style={styles.infoFieldRecordKeyText}>
-            {information?.distance || " Not Found"}
+            {information?.distance || distanceInfo.notFound}
           </Text>
         </View>
       </View>
@@ -92,7 +97,7 @@ export const DistanceInfo = ({ information, backPressHandler }) => {
 
         <View style={styles.inputFieldRecordValue}>
           <Text style={styles.infoFieldRecordKeyText}>
-            {information?.duration || " Not Found"}
+            {information?.duration || distanceInfo.notFound}
           </Text>
         </View>
       </View>
@@ -106,8 +111,10 @@ export const DistanceInfo = ({ information, backPressHandler }) => {
 
         <View style={styles.inputFieldRecordValue}>
           <Text style={styles.infoFieldRecordKeyText}>
-            {`Rs. ${calculateRequiredCredits(50, information.distance)}` ||
-              " Not Found"}
+            {`${calculateRequiredCredits(
+              distanceInfo.creditsPerKm,
+              information.distance
+            )}` || distanceInfo.notFound}
           </Text>
         </View>
       </View>
@@ -121,8 +128,10 @@ export const DistanceInfo = ({ information, backPressHandler }) => {
 
         <View style={styles.inputFieldRecordValue}>
           <Text style={styles.infoFieldRecordKeyText}>
-            {`Rs. ${calculateJourneyFare(50, information.distance)}` ||
-              " Not Found"}
+            {`${calculateJourneyFare(
+              distanceInfo.costPerKm,
+              information.distance
+            )}` || distanceInfo.notFound}
           </Text>
         </View>
       </View>
@@ -136,36 +145,19 @@ export const DistanceInfo = ({ information, backPressHandler }) => {
 
         <View style={styles.inputFieldRecordValue}>
           <Text style={styles.infoFieldRecordKeyText}>
-            {information?.status || " Not Found"}
+            {information?.status || distanceInfo.notFound}
           </Text>
         </View>
       </View>
+
+      <TouchableOpacity
+        style={styles.buyCreditsContainer}
+        onPress={onPressHandler}
+      >
+        <Text style={styles.buyCreditsContainerText}>
+          {distanceInfo.purchaseCredit}
+        </Text>
+      </TouchableOpacity>
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  backContainer: {
-    marginBottom: margin.xSmall,
-  },
-  backIconText: {
-    fontFamily: fontFamily.backButtonText,
-    fontSize: fontSize.medium,
-  },
-  infoContainer: {
-    padding: padding.small,
-    backgroundColor: colorVariants.white,
-  },
-  infoFieldRecord: {
-    flexDirection: flexDirections.row,
-    justifyContent: position.spaceBetween,
-    paddingTop: padding.xSmall,
-    paddingBottom: padding.xSmall,
-  },
-  infoFieldRecordKey: {},
-  inputFieldRecordValue: {},
-  infoFieldRecordKeyText: {
-    fontFamily: fontFamily.subTitleText,
-    fontSize: fontSize.medium,
-  },
-});
