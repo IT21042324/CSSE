@@ -63,16 +63,17 @@ export default function PurchaseCredits({ navigation }) {
 
   const { purchaseCredits } = MakeApiCall();
 
-  const onPressHandler = () => {
+  const onPressHandler = async () => {
     const parsedCredits = parseInt(credits);
 
-    const data = purchaseCredits({
+    const data = await purchaseCredits({
       userName,
       amount,
       credits: parsedCredits,
       inspectorId: "652aec3ccea326f999410998",
     });
 
+    console.log(data);
     const { updatedUserInfo } = data;
     console.log(updatedUserInfo);
 
@@ -89,7 +90,7 @@ export default function PurchaseCredits({ navigation }) {
       Toast.show({
         type: "error",
         text1: PurchaseCreditsText.tranactionFailureToastMessage,
-        text2: data,
+        text2: "Please verify if user name is correct",
       });
   };
 
