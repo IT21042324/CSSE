@@ -1,3 +1,5 @@
+import axios from "axios";
+
 export const MakeApiCall = () => {
   const BACKENDURL = "https://csse-bcfq.onrender.com";
 
@@ -23,9 +25,11 @@ export const MakeApiCall = () => {
       return result;
     },
     purchaseCredits: async (insertionData) => {
+      console.log(insertionData);
+
       try {
         const { data } = await axios.post(
-          `${BACKENDURL}/api/purchase`,
+          `${BACKENDURL}/api/purchase/`,
           insertionData
         );
 

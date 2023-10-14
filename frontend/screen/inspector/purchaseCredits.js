@@ -64,22 +64,30 @@ export default function PurchaseCredits({ navigation }) {
   const { purchaseCredits } = MakeApiCall();
 
   const onPressHandler = () => {
-    const { updatedUserInfo } = purchaseCredits({
+    const data = purchaseCredits({
       userName,
       amount,
       credits,
       inspectorId: "652aec3ccea326f999410998",
     });
+
+    const { updatedUserInfo } = data;
     console.log(updatedUserInfo);
+
     setIsLoading(false);
     navigation.navigate("Inspection");
-    Toast.show({
-      type: "success",
-      text1: PurchaseCreditsText.transactionSuccessToastMessage,
-      text2: `${credits} Credits  Added to ${userName}`,
-    });
 
-    //add a type:error toast as well
+    if (updatedUserInfo)
+      Toast.show({
+        type: "success",
+        text1: PurchaseCreditsText.transactionSuccessToastMessage,
+        text2: `${credits} Credits  Added to ${userName}`,
+      });
+    else
+      Toast.show({
+        type: "error",
+        text1: PurchaseCreditsText.tranactionFailureToastMessage,
+      });
   };
 
   return (

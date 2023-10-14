@@ -45,6 +45,7 @@ export const PurchaseCreditsText = {
   credits: "Credits",
   amount: "Amount",
   transactionSuccessToastMessage: "Transaction Successful",
+  tranactionFailureToastMessage: "Oops.. Transaction Unsuccessful",
 };
 
 export const inquirySelectionOptions = [
