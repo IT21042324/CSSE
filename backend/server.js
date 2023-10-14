@@ -12,11 +12,13 @@ app.use(express.urlencoded({ limit: "100mb", extended: true }));
 
 app.use(cors());
 
-// Get port number and database URI from environment variables
 const PORT = process.env.PORT;
 const URI = process.env.URI;
 
-// Connect to MongoDB database and start server
+const purchaseRoutes = require("./routes/purchase");
+const inquiryRoutes = require("./routes/inquiry");
+const userRoutes = require("./routes/user");
+
 mongoose
   .connect(URI)
   .then(() => {
@@ -28,3 +30,7 @@ mongoose
   .catch((err) => {
     console.log(err.message);
   });
+
+app.use("/api/purchase", purchaseRoutes);
+app.use("/api/inquiry", inquiryRoutes);
+app.use("/api/user", userRoutes);

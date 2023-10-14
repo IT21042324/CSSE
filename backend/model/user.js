@@ -9,6 +9,7 @@ const userSchema = new Schema(
     name: {
       type: String,
       default: "Sam Dutts",
+      required: true,
     },
     userName: {
       type: String,
@@ -21,13 +22,27 @@ const userSchema = new Schema(
     userType: {
       type: String,
       required: true,
+      default: "normalUser",
     },
+    image: String,
+    credits: {
+      type: Number,
+      default: 100,
+    },
+    token: String,
   },
   { timestamps: true }
 );
 
-//Creating User schema functions
-userSchema.statics.signup = async function (userName, password, userType) {
+userSchema.statics.signup = async function (
+  name,
+  userName,
+  password,
+  userType,
+  image,
+  credits,
+  token
+) {
   const exist = await this.findOne({ userName });
 
   if (!userName || !password || !userType)
@@ -45,18 +60,22 @@ userSchema.statics.signup = async function (userName, password, userType) {
   const hash = await bcrypt.hash(password, salt);
 
   const singedUser = await this.create({
+    name,
     userName,
     password: hash,
     userType,
+    image,
+    credits,
+    token,
   });
 
   return singedUser;
 };
 
-userSchema.statics.login = async function (userName, password, userType) {
+userSchema.statics.login = async function (userName, password) {
   if (!userName || !password) throw Error("Please fill all fields");
 
-  const user = await this.findOne({ userName, userType });
+  const user = await this.findOne({ userName });
   if (!user) throw Error("User Name doesn't exist");
 
   const match = await bcrypt.compare(password, user.password); //returns true or false
