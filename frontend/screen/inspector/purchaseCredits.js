@@ -64,8 +64,6 @@ export default function PurchaseCredits({ navigation }) {
   const { purchaseCredits } = MakeApiCall();
 
   const onPressHandler = () => {
-    //make the axios call
-
     const { updatedUserInfo } = purchaseCredits({
       userName,
       amount,
