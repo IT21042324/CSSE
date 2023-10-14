@@ -9,7 +9,6 @@ const makePurchase = async (req, res) => {
 
     const purchaseObject = purchase.toObject();
 
-    // await the updated user info from the updateUserCredits function
     const updatedUserInfo = await updateUserCredits(userId, credits);
 
     res.status(200).json({ updatedUserInfo, ...purchaseObject });
@@ -20,7 +19,6 @@ const makePurchase = async (req, res) => {
 
 const updateUserCredits = async (userId, credits) => {
   try {
-    // await the promise returned by the findByIdAndUpdate method
     const updatedUserInfo = await userModel.findByIdAndUpdate(
       userId,
       {
@@ -31,7 +29,6 @@ const updateUserCredits = async (userId, credits) => {
 
     console.log(updatedUserInfo);
 
-    // return the updated user info
     return updatedUserInfo;
   } catch (err) {
     console.log(err.message);
