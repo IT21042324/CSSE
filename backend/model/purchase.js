@@ -16,6 +16,7 @@ const purchaseSchema = new Schema(
       type: Schema.Types.ObjectId,
       ref: "User",
     },
+    userName: String,
     inspectorId: {
       type: Schema.Types.ObjectId,
       ref: "User",
