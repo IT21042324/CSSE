@@ -44,6 +44,7 @@ export const PurchaseCreditsText = {
   purchaseCredits: "Purchase Credits",
   credits: "Credits",
   amount: "Amount",
+  transactionSuccessToastMessage: "Transaction Successful",
 };
 
 export const inquirySelectionOptions = [
@@ -99,4 +100,8 @@ export const distanceInfo = {
   purchaseCredit: "Purchase Credits",
   creditsPerKm: 50,
   costPerKm: 50,
+};
+
+export const busSeatViewText = {
+  cols: 4,
 };

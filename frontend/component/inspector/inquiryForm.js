@@ -40,7 +40,7 @@ const StoreSchema = yup.object({
   inquiryType: yup.string().required(inquiryFormText.enterInqType),
 });
 
-export const InquryForm = ({ storeDetails, formHandler }) => {
+export const InquryForm = ({ dataFromQR, formHandler }) => {
   const [showActivityIndicator, setShowActivityIndicator] = useState(false);
 
   const [inquiryType, setInquiryType] = useState("");
@@ -53,8 +53,8 @@ export const InquryForm = ({ storeDetails, formHandler }) => {
   return (
     <Formik
       initialValues={{
-        penaltyAmount: storeDetails?.penaltyAmount,
-        description: storeDetails?.description,
+        penaltyAmount: 0,
+        description: "",
       }}
       validationSchema={StoreSchema}
       onSubmit={(values, actions) => {
@@ -78,13 +78,17 @@ export const InquryForm = ({ storeDetails, formHandler }) => {
                 <Text style={styles.commonDetailsRecordKey}>
                   {inquiryFormText.name}
                 </Text>
-                <Text style={styles.commonDetailsRecordValue}>Simon Stats</Text>
+                <Text style={styles.commonDetailsRecordValue}>
+                  {dataFromQR?.name || "Simon Watts"}
+                </Text>
               </View>
               <View style={styles.commonDetailsRecord}>
                 <Text style={styles.commonDetailsRecordKey}>
                   {inquiryFormText.startingPoint}
                 </Text>
-                <Text style={styles.commonDetailsRecordValue}>Hikkaduwa</Text>
+                <Text style={styles.commonDetailsRecordValue}>
+                  {dataFromQR?.startingPoint || "Unknown"}
+                </Text>
               </View>
 
               <View style={styles.commonDetailsRecord}>

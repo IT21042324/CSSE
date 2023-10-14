@@ -4,6 +4,7 @@ import {
   borderRadius,
   colorVariants,
   flexDirections,
+  flexValues,
   fontFamily,
   fontSize,
   height,
@@ -13,8 +14,12 @@ import {
   resizeMode,
   width,
 } from "../contants/globalConstants";
+import {
+  getDateFromCheckInDate,
+  getTimeFronCheckinDate,
+} from "../miscellaneous/helper";
 
-export const ScannedTokenDetailsContainer = () => {
+export const ScannedTokenDetailsContainer = ({ dataFromQR }) => {
   return (
     <View style={styles.userInfoContainer}>
       <View style={styles.imageAndNameContainer}>
@@ -25,25 +30,35 @@ export const ScannedTokenDetailsContainer = () => {
         />
         <View style={styles.nameAndCreditsContainer}>
           <View style={styles.singleInfo}>
-            <Text style={styles.nameInfoText}>Simon Stats</Text>
+            <Text style={styles.nameInfoText}>
+              {dataFromQR?.name || "Simon Stats"}
+            </Text>
           </View>
           <View style={styles.singleInfo}>
-            <Text style={styles.creditInfoText}>Credits: 200</Text>
+            <Text style={styles.creditInfoText}>
+              Credits: {dataFromQR.availableCredits}
+            </Text>
           </View>
         </View>
       </View>
       <View style={styles.travelInfoContainer}>
         <View style={styles.travelInfoRow}>
           <Text style={styles.travelInfoRowKey}>Boarding Point</Text>
-          <Text style={styles.travelInfoRowValue}>Maharagama</Text>
+          <Text style={styles.travelInfoRowValue}>
+            {dataFromQR.startingPoint}
+          </Text>
         </View>
         <View style={styles.travelInfoRow}>
-          <Text style={styles.travelInfoRowKey}>Alighting Point</Text>
-          <Text style={styles.travelInfoRowValue}>Malabe</Text>
+          <Text style={styles.travelInfoRowKey}>Checkin Time</Text>
+          <Text style={styles.travelInfoRowValue}>
+            {getTimeFronCheckinDate(dataFromQR.checkInDate)}
+          </Text>
         </View>
         <View style={styles.travelInfoRow}>
-          <Text style={styles.travelInfoRowKey}>Credits</Text>
-          <Text style={styles.travelInfoRowValue}>200</Text>
+          <Text style={styles.travelInfoRowKey}>Checkin Date</Text>
+          <Text style={styles.travelInfoRowValue}>
+            {getDateFromCheckInDate(dataFromQR.checkInDate)}
+          </Text>
         </View>
       </View>
     </View>
@@ -52,7 +67,7 @@ export const ScannedTokenDetailsContainer = () => {
 
 const styles = StyleSheet.create({
   userInfoContainer: {
-    flex: 1,
+    flex: flexValues.full,
     backgroundColor: colorVariants.whiteSmoke,
   },
   passengerIcon: {
@@ -85,7 +100,7 @@ const styles = StyleSheet.create({
     color: colorVariants.gray,
   },
   travelInfoContainer: {
-    flex: 1,
+    flex: flexValues.full,
     justifyContent: position.center,
   },
   travelInfoRow: {

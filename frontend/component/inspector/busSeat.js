@@ -1,16 +1,11 @@
 import { useState } from "react";
-import {
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-  useWindowDimensions,
-} from "react-native";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import Tooltip from "react-native-walkthrough-tooltip";
 import {
   borderRadius,
   colorVariants,
   flexDirections,
+  flexValues,
   fontFamily,
   fontSize,
   height,
@@ -18,13 +13,12 @@ import {
   padding,
   position,
   width,
+  widthVariants,
 } from "../../contants/globalConstants";
 import { busSeatString } from "../../contants/strings";
 
 export const BusSeat = ({ seatNo }) => {
   const [toolTipVisible, setToolTipVisible] = useState(false);
-
-  const windowWidth = useWindowDimensions().width;
 
   return (
     <TouchableOpacity
@@ -32,7 +26,7 @@ export const BusSeat = ({ seatNo }) => {
       onPress={() => setToolTipVisible(true)}
     >
       <View style={styles.seatNoContainer}>
-        <Text style={styles.seatNoText}>{seatNo || 1}</Text>
+        <Text style={styles.seatNoText}>{seatNo}</Text>
       </View>
 
       <Tooltip
@@ -43,7 +37,7 @@ export const BusSeat = ({ seatNo }) => {
               <Text style={styles.seatInfoRecordKey}>
                 {busSeatString.seatNo}
               </Text>
-              <Text style={styles.seatInfoRecordValue}>1</Text>
+              <Text style={styles.seatInfoRecordValue}>{seatNo}</Text>
             </View>
             <View style={styles.seatInfoRecord}>
               <Text style={styles.seatInfoRecordKey}>
@@ -69,7 +63,7 @@ export const BusSeat = ({ seatNo }) => {
             </View>
           </View>
         }
-        placement="center"
+        placement={position.center}
         onClose={() => setToolTipVisible(false)}
       ></Tooltip>
     </TouchableOpacity>
@@ -84,14 +78,18 @@ const styles = StyleSheet.create({
     borderRadius: borderRadius.busSeat,
     margin: margin.xSmall,
   },
-  seatNoContainer: { justifyContent: "center", alignItems: "center", flex: 1 },
+  seatNoContainer: {
+    justifyContent: position.center,
+    alignItems: position.center,
+    flex: flexValues.full,
+  },
   seatNoText: {
     color: colorVariants.white,
     fontFamily: fontFamily.titleText,
     fontSize: fontSize.large,
   },
   seatInfoContainer: {
-    minWidth: "100%",
+    minWidth: widthVariants.full,
   },
   seatInfoRecord: {
     padding: padding.xxxSmall,

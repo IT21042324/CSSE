@@ -1,14 +1,16 @@
 import { FlatList, StyleSheet, View } from "react-native";
 import {
   flexDirections,
+  flexValues,
   padding,
   position,
 } from "../../contants/globalConstants";
 import { BusSeat } from "./busSeat";
+import { busSeatViewText } from "../../contants/strings";
 
 export const BusSeatView = ({ seatInfo }) => {
   const { row } = seatInfo;
-  const col = 4;
+  const col = busSeatViewText.cols;
 
   const seats = Array(row * col)
     .fill()
@@ -21,7 +23,7 @@ export const BusSeatView = ({ seatInfo }) => {
       <FlatList
         data={seats}
         keyExtractor={(item) => item.id.toString()}
-        renderItem={({ item }) => <BusSeat />}
+        renderItem={({ item }) => <BusSeat seatNo={item.id} />}
         numColumns={col}
       />
       <View style={styles.backSeatRow}>
@@ -35,7 +37,7 @@ export const BusSeatView = ({ seatInfo }) => {
 
 const styles = StyleSheet.create({
   mainContainer: {
-    flex: 1,
+    flex: flexValues.full,
     alignItems: position.center,
     padding: padding.small,
   },

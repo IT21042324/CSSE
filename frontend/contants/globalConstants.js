@@ -6,6 +6,7 @@ export const padding = {
   xxSmall: 10,
   xSmall: 14,
   small: 18,
+  smallMedium: 20,
   medium: 22,
   large: 26,
   extraLarge: 30,
@@ -13,6 +14,7 @@ export const padding = {
 };
 
 export const margin = {
+  xxxxSmall: 2,
   xxxSmall: 6,
   xxSmall: 10,
   xSmall: 14,
@@ -44,6 +46,7 @@ export const width = {
   passengerIcon: 90,
   seatWidth: 50,
   distanceLocation: 160,
+  logoContainer: 40,
 };
 
 export const borderRadius = {

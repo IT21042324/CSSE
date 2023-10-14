@@ -68,7 +68,7 @@ export default function PurchaseCredits({ navigation }) {
     navigation.navigate("Inspection");
     Toast.show({
       type: "success",
-      text1: "Transaction Successful",
+      text1: PurchaseCreditsText.transactionSuccessToastMessage,
       text2: `${credits} Credits  Added to ${userName}`,
     });
 

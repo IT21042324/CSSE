@@ -29,6 +29,10 @@ import {
   width,
 } from "../../contants/globalConstants";
 import { ScanQRPageText } from "../../contants/strings";
+import {
+  checkIfScannedQrIsValid,
+  convertStringToJson,
+} from "../../miscellaneous/helper";
 
 const createButton = (onPressHandler, btnText) => (
   <TouchableOpacity style={styles.scanBtn} onPress={onPressHandler}>
@@ -38,17 +42,24 @@ const createButton = (onPressHandler, btnText) => (
 
 export default function ScanToken({ navigation }) {
   const [isCameraOpen, setIsCameraOpen] = useState(false);
-  const [isQrDetailsVisible, setIsQrDetailsVisible] = useState(true);
+  const [isQrDetailsVisible, setIsQrDetailsVisible] = useState(false);
   const [dataFromQR, setDataFromQR] = useState({});
+  const [isValidInfo, setValidInfo] = useState(false);
 
   const qrBtnPressHandler = (status) => {
     setIsCameraOpen(status);
+    setIsQrDetailsVisible(false);
   };
 
   const onQRScanned = (type, data) => {
+    const qrDataAsJson = convertStringToJson(data);
+
     setIsCameraOpen(false);
-    setDataFromQR(data);
-    console.log(data);
+    setDataFromQR(qrDataAsJson);
+    setIsQrDetailsVisible(true);
+    setValidInfo(checkIfScannedQrIsValid(qrDataAsJson));
+
+    console.log(qrDataAsJson);
   };
 
   const [modalVisible, setModalVisible] = useState(false);
@@ -61,11 +72,11 @@ export default function ScanToken({ navigation }) {
     <ScrollView
       contentContainerStyle={{
         ...styles.mainContainer,
-        justifyContent: modalVisible ? "center" : undefined,
+        justifyContent: modalVisible ? position.center : undefined,
       }}
     >
       {modalVisible ? (
-        <InquryForm formHandler={formHandler} />
+        <InquryForm formHandler={formHandler} dataFromQR={dataFromQR} />
       ) : (
         <>
           <InspectorFirstHalfComponent />
@@ -83,13 +94,14 @@ export default function ScanToken({ navigation }) {
             )}
           </View>
 
-          {isCameraOpen &&
+          {!isCameraOpen &&
+            !isQrDetailsVisible &&
             createButton(
               () => qrBtnPressHandler(true),
               ScanQRPageText.ScanQrBtnText
             )}
 
-          {!isCameraOpen &&
+          {isCameraOpen &&
             !isQrDetailsVisible &&
             createButton(
               () => qrBtnPressHandler(false),
@@ -99,7 +111,7 @@ export default function ScanToken({ navigation }) {
           {!isCameraOpen && isQrDetailsVisible && (
             <View style={styles.tokenStatusContainer}>
               <View style={styles.tokenStatusDetailsContainer}>
-                {dataFromQR.validInfo ? (
+                {isValidInfo ? (
                   <>
                     {scanTokenPage.tokenValidationIconSuccess}
                     <Text style={styles.tokenStatusText}>
@@ -115,10 +127,11 @@ export default function ScanToken({ navigation }) {
                   </>
                 )}
               </View>
-              {createButton(
-                () => formHandler(true),
-                ScanQRPageText.issueInquiry
-              )}
+              {!isValidInfo &&
+                createButton(
+                  () => formHandler(true),
+                  ScanQRPageText.issueInquiry
+                )}
             </View>
           )}
         </>

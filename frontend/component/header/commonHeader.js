@@ -1,6 +1,8 @@
 import { Image, StyleSheet, Text, View } from "react-native";
+import { logoImage } from "../../assets/imageIndex";
 import {
   flexDirections,
+  fontSize,
   height,
   position,
   width,
@@ -11,7 +13,7 @@ export const Header = ({ title }) => {
   return (
     <View style={styles.header}>
       <View style={styles.logoContainer}>
-        <Image source={require("../../assets/logo.png")} style={styles.logo} />
+        <Image source={logoImage} style={styles.logo} />
       </View>
       <View>
         <Text style={globalStyles.titleText}>{title}</Text>
@@ -28,16 +30,16 @@ const styles = StyleSheet.create({
     alignItems: position.center,
   },
   headerText: {
-    fontSize: 20,
+    fontSize: fontSize.large,
     letterSpacing: 1,
   },
   logoContainer: {
     position: position.absolute,
-    right: 0,
+    right: position.none,
     height: height.full,
     alignItems: position.center,
     justifyContent: position.center,
-    width: 40,
+    width: width.logoContainer,
   },
   logo: {
     height: height.logoHeight,
