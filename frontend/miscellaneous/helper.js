@@ -7,14 +7,15 @@ export const findObjectLength = (object) => {
 export const calculateJourneyFare = (ticketAmount, distance) => {
   let distanceValue = parseFloat(distance);
 
-  // ticketAmount is the amount per km.
-  return `Rs. ${ticketAmount * distanceValue}`;
+  const totAmount = (ticketAmount * distanceValue)?.toFixed(2);
+
+  return `Rs. ${totAmount}`;
 };
 
 export const calculateRequiredCredits = (creditsPerKm, distance) => {
   let distanceValue = parseFloat(distance);
 
-  return creditsPerKm * distanceValue;
+  return (creditsPerKm * distanceValue)?.toFixed(2);
 };
 
 export const convertStringToJson = (str) => {

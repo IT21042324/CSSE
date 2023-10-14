@@ -64,10 +64,12 @@ export default function PurchaseCredits({ navigation }) {
   const { purchaseCredits } = MakeApiCall();
 
   const onPressHandler = () => {
+    const parsedCredits = parseInt(credits);
+
     const data = purchaseCredits({
       userName,
       amount,
-      credits,
+      credits: parsedCredits,
       inspectorId: "652aec3ccea326f999410998",
     });
 
@@ -87,6 +89,7 @@ export default function PurchaseCredits({ navigation }) {
       Toast.show({
         type: "error",
         text1: PurchaseCreditsText.tranactionFailureToastMessage,
+        text2: data,
       });
   };
 

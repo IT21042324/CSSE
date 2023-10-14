@@ -26,7 +26,7 @@ const purchaseSchema = new Schema(
       default: "inspector",
     },
     amount: {
-      type: Number,
+      type: String,
       default: "inspector",
     },
   },
