@@ -24,8 +24,8 @@ import {
   position,
   size,
 } from "../../contants/globalConstants";
+import { MakeApiCall } from "../../api/apiCalls";
 
-// Factory function to create InputFieldRecord
 const createInputFieldRecord = (
   keyText,
   onChangeTextHandler,
@@ -61,10 +61,19 @@ export default function PurchaseCredits({ navigation }) {
   const [amount, setAmount] = useState(defaultAmountValue);
   const [isLoading, setIsLoading] = useState(false);
 
+  const { purchaseCredits } = MakeApiCall();
+
   const onPressHandler = () => {
     //make the axios call
-    //after that say setIsLoading(false) to stop showing activityindicator
-    //then say navigation.navigate("Inspection");
+
+    const { updatedUserInfo } = purchaseCredits({
+      userName,
+      amount,
+      credits,
+      inspectorId: "652aec3ccea326f999410998",
+    });
+    console.log(updatedUserInfo);
+    setIsLoading(false);
     navigation.navigate("Inspection");
     Toast.show({
       type: "success",
@@ -78,7 +87,7 @@ export default function PurchaseCredits({ navigation }) {
   return (
     <ScrollView style={styles.distanceContainer}>
       <View style={styles.inputFieldContainer}>
-        {createInputFieldRecord(PurchaseCreditsText.userId, (text) =>
+        {createInputFieldRecord(PurchaseCreditsText.userName, (text) =>
           setUserName(text)
         )}
         {createInputFieldRecord(

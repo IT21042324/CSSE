@@ -6,6 +6,7 @@ const purchaseSchema = new Schema(
     paymentMethod: {
       type: String,
       required: true,
+      default: "cash",
     },
     paymentType: {
       type: String,

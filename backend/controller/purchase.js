@@ -1,7 +1,7 @@
 const purchaseModel = require("../model/purchase");
 const userModel = require("../model/user");
 const makePurchase = async (req, res) => {
-  const { userId, credits } = req.body;
+  const { userName, credits } = req.body;
 
   try {
     const purchase = new purchaseModel(req.body);
@@ -9,7 +9,7 @@ const makePurchase = async (req, res) => {
 
     const purchaseObject = purchase.toObject();
 
-    const updatedUserInfo = await updateUserCredits(userId, credits);
+    const updatedUserInfo = await updateUserCredits(userName, credits);
 
     res.status(200).json({ updatedUserInfo, ...purchaseObject });
   } catch (err) {
@@ -17,10 +17,10 @@ const makePurchase = async (req, res) => {
   }
 };
 
-const updateUserCredits = async (userId, credits) => {
+const updateUserCredits = async (userName, credits) => {
   try {
-    const updatedUserInfo = await userModel.findByIdAndUpdate(
-      userId,
+    const updatedUserInfo = await userModel.findOneAndUpdate(
+      { userName },
       {
         $inc: { credits: credits },
       },

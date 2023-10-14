@@ -1,4 +1,6 @@
 export const MakeApiCall = () => {
+  const BACKENDURL = "https://csse-bcfq.onrender.com";
+
   return {
     getDistance: async (origins, destinations) => {
       const response = await fetch(
@@ -19,6 +21,19 @@ export const MakeApiCall = () => {
       };
 
       return result;
+    },
+    purchaseCredits: async (insertionData) => {
+      try {
+        const { data } = await axios.post(
+          `${BACKENDURL}/api/purchase`,
+          insertionData
+        );
+
+        return data;
+      } catch (err) {
+        console.error(err);
+        return err;
+      }
     },
   };
 };

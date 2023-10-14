@@ -40,7 +40,7 @@ export const ScanQRPageText = {
 };
 
 export const PurchaseCreditsText = {
-  userId: "User ID",
+  userName: "User Name",
   purchaseCredits: "Purchase Credits",
   credits: "Credits",
   amount: "Amount",

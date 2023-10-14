@@ -60,7 +60,7 @@ export const DistanceCalculator = ({ navigation }) => {
 
   return (
     <ScrollView style={styles.distanceContainer}>
-      {!isInfoResultsVisible ? (
+      {isInfoResultsVisible ? (
         <DistanceInfo
           information={distanceInfo}
           backPressHandler={backPressHandler}
