@@ -1,23 +1,11 @@
 import { useEffect, useState } from "react";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { Text, TouchableOpacity, View } from "react-native";
 import Tooltip from "react-native-walkthrough-tooltip";
-import {
-  borderRadius,
-  colorVariants,
-  flexDirections,
-  flexValues,
-  fontFamily,
-  fontSize,
-  height,
-  margin,
-  padding,
-  position,
-  width,
-  widthVariants,
-} from "../../contants/globalConstants";
-import { busSeatString } from "../../contants/strings";
 import { getSeatData } from "../../asyncStorage/busAllocation";
+import { colorVariants, position } from "../../contants/globalConstants";
+import { busSeatString } from "../../contants/strings";
 import { findObjectLength } from "../../miscellaneous/helper";
+import { styles } from "../../styles/busSeat";
 
 export const BusSeat = ({ seatNo }) => {
   const [toolTipVisible, setToolTipVisible] = useState(false);
@@ -121,42 +109,3 @@ export const BusSeat = ({ seatNo }) => {
     </TouchableOpacity>
   );
 };
-
-const styles = StyleSheet.create({
-  seatContainer: {
-    width: width.seatWidth,
-    height: height.seatHeight,
-    borderRadius: borderRadius.busSeat,
-    margin: margin.xSmall,
-  },
-  seatNoContainer: {
-    justifyContent: position.center,
-    alignItems: position.center,
-    flex: flexValues.full,
-  },
-  seatNoText: {
-    color: colorVariants.white,
-    fontFamily: fontFamily.titleText,
-    fontSize: fontSize.large,
-  },
-  seatInfoContainer: {
-    minWidth: widthVariants.full,
-  },
-  seatInfoRecord: {
-    padding: padding.xxxSmall,
-    paddingTop: padding.small,
-    paddingBotttom: padding.small,
-    flexDirection: flexDirections.row,
-    justifyContent: position.spaceBetween,
-  },
-  seatInfoRecordKey: {
-    fontFamily: fontFamily.subTitleText,
-    fontSize: fontSize.medium,
-    color: colorVariants.black,
-  },
-  seatInfoRecordValue: {
-    fontFamily: fontFamily.subTitleText,
-    fontSize: fontSize.medium,
-    color: colorVariants.gray,
-  },
-});

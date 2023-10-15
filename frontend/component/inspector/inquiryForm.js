@@ -3,7 +3,6 @@ import { useState } from "react";
 import {
   ActivityIndicator,
   Button,
-  StyleSheet,
   Text,
   TextInput,
   TouchableOpacity,
@@ -11,18 +10,10 @@ import {
 } from "react-native";
 import * as yup from "yup";
 import {
-  borderRadius,
-  borderWidth,
   colorVariants,
   currDate,
   currTime,
-  flexDirections,
-  fontFamily,
-  fontSize,
   inquiryForm,
-  margin,
-  padding,
-  position,
 } from "../../contants/globalConstants";
 import {
   inquiryFormText,
@@ -33,6 +24,7 @@ import { globalStyles } from "../../styles/global";
 import { DropDown } from "../dropDownPicker";
 import { MakeApiCall } from "../../api/apiCalls";
 import Toast from "react-native-toast-message";
+import { styles } from "../../styles/inquiryForm";
 
 const FormSchema = yup.object({
   penaltyAmount: yup
@@ -211,48 +203,3 @@ export const InquryForm = ({ dataFromQR, formHandler, navigation }) => {
     </Formik>
   );
 };
-
-const styles = StyleSheet.create({
-  mainContainer: {
-    backgroundColor: colorVariants.whiteSmoke,
-    borderWidth: borderWidth.formOutset,
-    borderColor: colorVariants.babyBlue,
-    padding: padding.xSmall,
-    justifyContent: position.center,
-  },
-  inquiryFormHeadingContainer: {
-    flexDirection: flexDirections.row,
-    justifyContent: position.spaceBetween,
-    paddingBottom: padding.xSmall,
-  },
-  inquiryFormHeadingContainerText: {
-    fontFamily: fontFamily.titleText,
-    fontSize: fontSize.xLarge,
-  },
-  commonDetailsRecord: {
-    flexDirection: flexDirections.row,
-    justifyContent: position.spaceBetween,
-    marginTop: margin.xSmall,
-  },
-  commonDetailsRecordKey: {
-    fontFamily: fontFamily.subTitleText,
-    fontSize: fontSize.medium,
-  },
-  commonDetailsRecordValue: {
-    fontFamily: fontFamily.subTitleText,
-    fontSize: fontSize.medium,
-    color: colorVariants.gray,
-  },
-  formInputContainer: {
-    marginTop: margin.xxSmall,
-    padding: padding.xxSmall,
-    backgroundColor: colorVariants.white,
-  },
-  textInput: {
-    borderWidth: borderWidth.formField,
-    padding: padding.xxSmall,
-    fontSize: fontSize.medium,
-    borderRadius: borderRadius.textInput,
-    marginTop: margin.xxSmall,
-  },
-});

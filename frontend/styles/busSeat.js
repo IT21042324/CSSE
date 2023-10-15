@@ -3,6 +3,7 @@ import {
   borderRadius,
   colorVariants,
   flexDirections,
+  flexValues,
   fontFamily,
   fontSize,
   height,
@@ -10,24 +11,28 @@ import {
   padding,
   position,
   width,
+  widthVariants,
 } from "../contants/globalConstants";
 
 export const styles = StyleSheet.create({
   seatContainer: {
-    backgroundColor: colorVariants.babyBlue,
     width: width.seatWidth,
     height: height.seatHeight,
     borderRadius: borderRadius.busSeat,
     margin: margin.xSmall,
   },
-  seatNoContainer: { justifyContent: "center", alignItems: "center", flex: 1 },
+  seatNoContainer: {
+    justifyContent: position.center,
+    alignItems: position.center,
+    flex: flexValues.full,
+  },
   seatNoText: {
     color: colorVariants.white,
     fontFamily: fontFamily.titleText,
     fontSize: fontSize.large,
   },
   seatInfoContainer: {
-    minWidth: "100%",
+    minWidth: widthVariants.full,
   },
   seatInfoRecord: {
     padding: padding.xxxSmall,

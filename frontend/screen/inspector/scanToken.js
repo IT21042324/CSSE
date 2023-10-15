@@ -1,38 +1,21 @@
 import { useState } from "react";
-import {
-  Image,
-  ScrollView,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from "react-native";
+import { Image, ScrollView, Text, TouchableOpacity, View } from "react-native";
 import { qrImage } from "../../assets/imageIndex";
 import { ScannedTokenDetailsContainer } from "../../component/ScannedTokenDetailsContainer";
 import { InquryForm } from "../../component/inspector/inquiryForm";
 import { InspectorFirstHalfComponent } from "../../component/inspector/inspectorImage";
 import QrScannner from "../../component/qrScanner";
 import {
-  borderRadius,
-  colorVariants,
-  flexDirections,
-  flexValues,
-  fontFamily,
-  fontSize,
-  fontWeight,
-  height,
-  margin,
-  padding,
   position,
   resizeMode,
   scanTokenPage,
-  width,
 } from "../../contants/globalConstants";
 import { ScanQRPageText } from "../../contants/strings";
 import {
   checkIfScannedQrIsValid,
   convertStringToJson,
 } from "../../miscellaneous/helper";
+import { styles } from "../../styles/scanToken";
 
 const createButton = (onPressHandler, btnText) => (
   <TouchableOpacity style={styles.scanBtn} onPress={onPressHandler}>
@@ -146,65 +129,3 @@ export default function ScanToken({ navigation }) {
     </ScrollView>
   );
 }
-
-const styles = StyleSheet.create({
-  mainContainer: {
-    padding: margin.xxSmall,
-    flex: flexValues.full,
-    backgroundColor: colorVariants.white,
-  },
-  qrContainer: {
-    height: height.qrContainer,
-    backgroundColor: colorVariants.babyBlue,
-    padding: padding.xxxSmall,
-  },
-  qrImage: {
-    height: height.full,
-    width: width.full,
-  },
-  scanBtn: {
-    marginTop: margin.medium,
-    padding: padding.small,
-    flexDirection: flexDirections.row,
-    justifyContent: position.center,
-    backgroundColor: colorVariants.babyBlue,
-    width: width.qrScannerBtn,
-    alignSelf: position.center,
-  },
-  scanBtnText: {
-    color: colorVariants.white,
-    fontWeight: fontWeight.bold,
-    fontFamily: fontFamily.subTitleText,
-    fontSize: fontSize.large,
-  },
-  tokenStatusContainer: {
-    width: width.full,
-    marginTop: margin.medium,
-    height: height.tokenStatusContainer,
-  },
-  tokenStatusDetailsContainer: {
-    flexDirection: flexDirections.row,
-    justifyContent: position.spaceAround,
-    alignItems: position.center,
-    backgroundColor: colorVariants.whiteSmoke,
-    padding: padding.small,
-  },
-  tokenStatusText: {
-    fontFamily: fontFamily.subTitleText,
-    fontSize: fontSize.large,
-  },
-  inquiryBtn: {
-    marginTop: margin.medium,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: colorVariants.babyBlue,
-    padding: padding.xxSmall,
-    width: width.half,
-    alignSelf: "center",
-    borderRadius: borderRadius.inquiryBtn,
-  },
-  inquiryBtnText: {
-    fontFamily: fontFamily.subTitleText,
-    fontSize: fontSize.medium,
-  },
-});

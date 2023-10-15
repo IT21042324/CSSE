@@ -2,29 +2,16 @@ import { useState } from "react";
 import {
   ActivityIndicator,
   ScrollView,
-  StyleSheet,
   Text,
   TextInput,
   TouchableOpacity,
   View,
 } from "react-native";
 import { PurchaseCreditsText } from "../../contants/strings";
-
 import Toast from "react-native-toast-message";
-import {
-  borderWidth,
-  colorVariants,
-  flexDirections,
-  flexValues,
-  fontFamily,
-  fontSize,
-  fontWeight,
-  margin,
-  padding,
-  position,
-  size,
-} from "../../contants/globalConstants";
 import { MakeApiCall } from "../../api/apiCalls";
+import { colorVariants } from "../../contants/globalConstants";
+import { styles } from "../../styles/purchaseCredits";
 
 const createInputFieldRecord = (
   keyText,
@@ -134,57 +121,3 @@ export default function PurchaseCredits({ navigation }) {
     </ScrollView>
   );
 }
-
-export const styles = StyleSheet.create({
-  distanceContainer: {
-    flex: flexValues.full,
-    flexGrow: flexValues.full,
-  },
-  inputFieldContainer: {
-    padding: padding.small,
-    backgroundColor: colorVariants.white,
-  },
-  inputFieldRecord: {},
-  inputFieldRecordKey: {
-    paddingTop: padding.xxSmall,
-  },
-  inputFieldRecordValue: {
-    paddingBottom: padding.xxSmall,
-  },
-  inputFieldRecordKeyText: {
-    fontFamily: fontFamily.subTitleText,
-    fontSize: fontSize.medium,
-  },
-  inputFieldRecordTextInput: {
-    fontFamily: fontFamily.subTitleText,
-    fontSize: fontSize.large,
-    borderWidth: borderWidth.formField,
-    padding: padding.xxxSmall,
-  },
-  disabledTextField: {
-    fontFamily: fontFamily.subTitleText,
-    fontSize: fontSize.large,
-    borderWidth: borderWidth.formField,
-    padding: padding.xxxSmall,
-    backgroundColor: colorVariants.lightGray,
-    borderColor: colorVariants.lightGray,
-  },
-  btnContainer: {
-    flexDirection: flexDirections.row,
-    justifyContent: position.center,
-    padding: padding.small,
-    backgroundColor: colorVariants.babyBlue,
-    marginTop: margin.xxSmall,
-  },
-  btnContainerText: {
-    fontFamily: fontFamily.subTitleText,
-    fontSize: fontSize.medium,
-    color: colorVariants.white,
-    fontWeight: fontWeight.bold,
-  },
-  activityIndication: {
-    flexDirection: flexDirections.row,
-    justifyContent: position.center,
-    padding: padding.small,
-  },
-});

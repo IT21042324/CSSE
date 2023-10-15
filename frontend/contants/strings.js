@@ -113,3 +113,9 @@ export const distanceInfo = {
 export const busSeatViewText = {
   cols: 4,
 };
+
+export const scannedTokenDetailsContainerText = {
+  boardingPoint: "Boarding Point",
+  checkInTime: "Checkin Time",
+  checkInDate: "Checkin Date",
+};

@@ -1,7 +1,8 @@
 import * as Location from "expo-location";
 import React, { useEffect, useState } from "react";
-import { StyleSheet, View } from "react-native";
+import { View } from "react-native";
 import MapView, { Marker } from "react-native-maps";
+import { styles } from "../../styles/googleMap";
 
 // Factory function to create Marker
 const createMarker = (coordinate, title) => (
@@ -61,13 +62,3 @@ export default function Maps() {
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  map: {
-    width: "100%",
-    height: "100%",
-  },
-});

@@ -1,25 +1,14 @@
-import { Image, StyleSheet, Text, View } from "react-native";
+import { Image, Text, View } from "react-native";
 import { passengerImage } from "../assets/imageIndex";
-import {
-  borderRadius,
-  colorVariants,
-  flexDirections,
-  flexValues,
-  fontFamily,
-  fontSize,
-  height,
-  margin,
-  padding,
-  position,
-  resizeMode,
-  width,
-} from "../contants/globalConstants";
+import { resizeMode } from "../contants/globalConstants";
 import {
   getDateFromCheckInDate,
   getTimeFronCheckinDate,
 } from "../miscellaneous/helper";
 import { useEffect } from "react";
 import { storeSeatData } from "../asyncStorage/busAllocation";
+import { styles } from "../styles/ScannedTokenDetailsContainer";
+import { scannedTokenDetailsContainerText } from "../contants/strings";
 
 export const ScannedTokenDetailsContainer = ({ dataFromQR, isValidInfo }) => {
   useEffect(() => {
@@ -52,19 +41,25 @@ export const ScannedTokenDetailsContainer = ({ dataFromQR, isValidInfo }) => {
       </View>
       <View style={styles.travelInfoContainer}>
         <View style={styles.travelInfoRow}>
-          <Text style={styles.travelInfoRowKey}>Boarding Point</Text>
+          <Text style={styles.travelInfoRowKey}>
+            {scannedTokenDetailsContainerText.boardingPoint}
+          </Text>
           <Text style={styles.travelInfoRowValue}>
             {dataFromQR.startingPoint}
           </Text>
         </View>
         <View style={styles.travelInfoRow}>
-          <Text style={styles.travelInfoRowKey}>Checkin Time</Text>
+          <Text style={styles.travelInfoRowKey}>
+            {scannedTokenDetailsContainerText.checkInTime}
+          </Text>
           <Text style={styles.travelInfoRowValue}>
             {getTimeFronCheckinDate(dataFromQR.checkInDate)}
           </Text>
         </View>
         <View style={styles.travelInfoRow}>
-          <Text style={styles.travelInfoRowKey}>Checkin Date</Text>
+          <Text style={styles.travelInfoRowKey}>
+            {scannedTokenDetailsContainerText.checkInDate}
+          </Text>
           <Text style={styles.travelInfoRowValue}>
             {getDateFromCheckInDate(dataFromQR.checkInDate)}
           </Text>
@@ -73,57 +68,3 @@ export const ScannedTokenDetailsContainer = ({ dataFromQR, isValidInfo }) => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  userInfoContainer: {
-    flex: flexValues.full,
-    backgroundColor: colorVariants.whiteSmoke,
-  },
-  passengerIcon: {
-    height: height.full,
-    width: width.passengerIcon,
-    borderRadius: borderRadius.passengerIcon,
-  },
-  imageAndNameContainer: {
-    width: width.full,
-    height: height.imageAndNameContainer,
-    flexDirection: flexDirections.row,
-    paddingLeft: padding.xxSmall,
-    paddingRight: padding.xxSmall,
-    paddingTop: padding.xxxSmall,
-  },
-  nameAndCreditsContainer: {
-    flexDirection: flexDirections.column,
-    marginLeft: margin.small,
-    justifyContent: position.center,
-  },
-  singleInfo: {},
-  nameInfoText: {
-    fontFamily: fontFamily.subTitleText,
-    fontSize: fontSize.large,
-    color: colorVariants.black,
-  },
-  creditInfoText: {
-    fontFamily: fontFamily.subTitleText,
-    fontSize: fontSize.medium,
-    color: colorVariants.gray,
-  },
-  travelInfoContainer: {
-    flex: flexValues.full,
-    justifyContent: position.center,
-  },
-  travelInfoRow: {
-    flexDirection: flexDirections.row,
-    justifyContent: position.spaceBetween,
-    padding: padding.xSmall,
-  },
-  travelInfoRowKey: {
-    fontFamily: fontFamily.subTitleText,
-    fontSize: fontSize.medium,
-  },
-  travelInfoRowValue: {
-    fontFamily: fontFamily.subTitleText,
-    fontSize: fontSize.medium,
-    color: colorVariants.gray,
-  },
-});

@@ -1,5 +1,5 @@
-import { Image, StyleSheet, View } from "react-native";
-import { padding, position } from "../../contants/globalConstants";
+import { Image, View } from "react-native";
+import { styles } from "../../styles/inspectorFirstHalfComponent";
 
 export const InspectorFirstHalfComponent = () => {
   return (
@@ -11,11 +11,3 @@ export const InspectorFirstHalfComponent = () => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  inspectorImage: {
-    alignItems: position.center,
-    justifyContent: position.center,
-    padding: padding.small,
-  },
-});

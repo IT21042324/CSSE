@@ -1,12 +1,8 @@
-import { FlatList, StyleSheet, View } from "react-native";
-import {
-  flexDirections,
-  flexValues,
-  padding,
-  position,
-} from "../../contants/globalConstants";
+import { FlatList, View } from "react-native";
+
 import { BusSeat } from "./busSeat";
 import { busSeatViewText } from "../../contants/strings";
+import { styles } from "../../styles/busSeatView";
 
 export const BusSeatView = ({ seatInfo }) => {
   const { row } = seatInfo;
@@ -34,14 +30,3 @@ export const BusSeatView = ({ seatInfo }) => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  mainContainer: {
-    flex: flexValues.full,
-    alignItems: position.center,
-    padding: padding.small,
-  },
-  backSeatRow: {
-    flexDirection: flexDirections.row,
-  },
-});
