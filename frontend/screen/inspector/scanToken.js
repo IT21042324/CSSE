@@ -76,7 +76,11 @@ export default function ScanToken({ navigation }) {
       }}
     >
       {modalVisible ? (
-        <InquryForm formHandler={formHandler} dataFromQR={dataFromQR} />
+        <InquryForm
+          formHandler={formHandler}
+          dataFromQR={dataFromQR}
+          navigation={navigation}
+        />
       ) : (
         <>
           <InspectorFirstHalfComponent />

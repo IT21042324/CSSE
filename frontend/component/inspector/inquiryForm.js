@@ -34,16 +34,15 @@ import { DropDown } from "../dropDownPicker";
 import { MakeApiCall } from "../../api/apiCalls";
 import Toast from "react-native-toast-message";
 
-const StoreSchema = yup.object({
+const FormSchema = yup.object({
   penaltyAmount: yup
     .number()
     .required()
     .min(0, inquiryFormText.enterValidAmount),
   description: yup.string().required().min(2, inquiryFormText.enterInqDesc),
-  inquiryType: yup.string().required(inquiryFormText.enterInqType),
 });
 
-export const InquryForm = ({ dataFromQR, formHandler }) => {
+export const InquryForm = ({ dataFromQR, formHandler, navigation }) => {
   const [showActivityIndicator, setShowActivityIndicator] = useState(false);
 
   const [inquiryType, setInquiryType] = useState("");
@@ -54,24 +53,43 @@ export const InquryForm = ({ dataFromQR, formHandler }) => {
   const { makeInquiry } = MakeApiCall();
 
   const onSubmitHandler = async (values) => {
-    const data = await makeInquiry({
+    const penaltyAm = values.penaltyAmount;
+
+    console.log({
       ...values,
-      userName: dataFromQR.userName,
+      penaltyAmount: `Rs. ${penaltyAm}`,
+      userName: dataFromQR?.userName || "sam@gmail.com",
       startingPoint: dataFromQR.startingPoint,
       inspectorId: "652aec3ccea326f999410998",
+      inquiryType,
     });
 
-    if (data) {
+    setShowActivityIndicator(true);
+
+    const data = await makeInquiry({
+      ...values,
+      penaltyAmount: `Rs. ${penaltyAm}`,
+      userName: dataFromQR?.userName || "simon@gmail.com",
+      startingPoint: dataFromQR.startingPoint,
+      inspectorId: "652aec3ccea326f999410998",
+      inquiryType,
+    });
+
+    if (data?._id) {
       Toast.show({
         type: "success",
         text1: inquiryFormTexts.inquirySubmittedTextMessage,
       });
+      setShowActivityIndicator(false);
     } else {
       Toast.show({
-        type: "errror",
+        type: "error",
         text1: inquiryFormTexts.inquiryFormFailureToast,
       });
+      setShowActivityIndicator(false);
     }
+
+    navigation.navigate("Inspection");
   };
 
   return (
@@ -80,10 +98,11 @@ export const InquryForm = ({ dataFromQR, formHandler }) => {
         penaltyAmount: 0,
         description: "",
       }}
-      validationSchema={StoreSchema}
-      onSubmit={(values, actions) => {
+      validationSchema={FormSchema}
+      onSubmit={async (values, actions) => {
         actions.resetForm();
-        onSubmitHandler(values);
+        console.log(values);
+        await onSubmitHandler(values);
       }}
     >
       {(props) => {

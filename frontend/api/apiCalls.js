@@ -38,12 +38,14 @@ export const MakeApiCall = () => {
     },
     makeInquiry: async (insertionData) => {
       try {
-        const info = await axios.post(
-          `${BACKENDURL}/api/inquiry/`,
+        const { data } = await axios.post(
+          `${BACKENDURL}/api/inquiry`,
           insertionData
         );
 
-        return info.data;
+        console.log(data);
+
+        return data;
       } catch (err) {
         console.log(err);
         return err;
