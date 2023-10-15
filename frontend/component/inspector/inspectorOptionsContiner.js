@@ -16,6 +16,8 @@ export const InspectorOptionContainer = ({ navigation }) => {
       navigation.navigate(ScreenKey.ViewRoute);
     } else if (screen === screenHeadings.distanceCaluclator) {
       navigation.navigate(ScreenKey.DistanceCalculator);
+    } else if (screen === screenHeadings.readInquiries) {
+      navigation.navigate(ScreenKey.ReadInquiries);
     }
   };
   return (

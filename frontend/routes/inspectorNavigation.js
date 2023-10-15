@@ -10,6 +10,7 @@ import ScanToken from "../screen/inspector/scanToken";
 import { ViewAllocation } from "../screen/inspector/viewAllocation";
 import { ViewRoute } from "../screen/inspector/viewRoute";
 import Welcome from "../screen/welcome";
+import { ReadInquiries } from "../screen/inspector/readInquiries";
 
 const screens = {
   Welcome: {
@@ -18,49 +19,43 @@ const screens = {
   Inspection: {
     screen: inspectorLandingScreen,
     navigationOptions: {
-      headerTitle: () => (
-        <Header title={screenTitles.inspection} showOptions={false} />
-      ),
+      headerTitle: () => <Header title={screenTitles.inspection} />,
     },
   },
   ValidateToken: {
     screen: ScanToken,
     navigationOptions: {
-      headerTitle: () => (
-        <Header title={screenTitles.validateToken} showOptions={false} />
-      ),
+      headerTitle: () => <Header title={screenTitles.validateToken} />,
     },
   },
   ViewAllocation: {
     screen: ViewAllocation,
     navigationOptions: {
-      headerTitle: () => (
-        <Header title={screenTitles.viewAllocation} showOptions={true} />
-      ),
+      headerTitle: () => <Header title={screenTitles.viewAllocation} />,
+    },
+  },
+  ReadInquiries: {
+    screen: ReadInquiries,
+    navigationOptions: {
+      headerTitle: () => <Header title={screenTitles.readInquiries} />,
     },
   },
   ViewRoute: {
     screen: ViewRoute,
     navigationOptions: {
-      headerTitle: () => (
-        <Header title={screenTitles.viewRoute} showOptions={false} />
-      ),
+      headerTitle: () => <Header title={screenTitles.viewRoute} />,
     },
   },
   DistanceCalculator: {
     screen: DistanceCalculator,
     navigationOptions: {
-      headerTitle: () => (
-        <Header title={screenTitles.distanceCaluclator} showOptions={false} />
-      ),
+      headerTitle: () => <Header title={screenTitles.distanceCaluclator} />,
     },
   },
   PurchaseCredits: {
     screen: PurchaseCredits,
     navigationOptions: {
-      headerTitle: () => (
-        <Header title={screenTitles.purchaseCredits} showOptions={false} />
-      ),
+      headerTitle: () => <Header title={screenTitles.purchaseCredits} />,
     },
   },
 };

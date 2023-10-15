@@ -3,6 +3,7 @@ export const inspectorLandingScreenOptions = [
   "View Allocation",
   "Distance Calculator",
   "View Travel Route",
+  "Read Inquiries",
 ];
 
 export const screenTitles = {
@@ -13,6 +14,7 @@ export const screenTitles = {
   viewRoute: "View Travel Route",
   distanceCaluclator: "Distance Calculator",
   purchaseCredits: "Purchase Credits",
+  readInquiries: "Read Inquiries",
 };
 
 export const screenHeadings = {
@@ -21,6 +23,7 @@ export const screenHeadings = {
   viewRoute: "View Travel Route",
   distanceCaluclator: "Distance Calculator",
   purchaseCredits: "Purchase Credits",
+  readInquiries: "Read Inquiries",
 };
 
 export const ScreenKey = {
@@ -29,6 +32,7 @@ export const ScreenKey = {
   ViewRoute: "ViewRoute",
   DistanceCalculator: "DistanceCalculator",
   PurchaseCredits: "PurchaseCredits",
+  ReadInquiries: "ReadInquiries",
 };
 
 export const ScanQRPageText = {

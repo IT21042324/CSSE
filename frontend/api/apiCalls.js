@@ -1,7 +1,10 @@
 import axios from "axios";
+import { UseUserContext } from "../useHooks/user";
 const BACKENDURL = "https://csse-bcfq.onrender.com";
 
 export const MakeApiCall = () => {
+  const { user } = UseUserContext();
+
   return {
     getDistance: async (origins, destinations) => {
       const response = await fetch(
@@ -69,6 +72,16 @@ export const MakeApiCall = () => {
           insertionData
         );
         return info.data;
+      } catch (err) {
+        console.log(err);
+      }
+    },
+    findInqsByInspectorId: async function () {
+      try {
+        const { data } = await axios.get(
+          `${BACKENDURL}/api/inquiry/${user._id}}`
+        );
+        return data;
       } catch (err) {
         console.log(err);
       }

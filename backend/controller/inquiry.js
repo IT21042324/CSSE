@@ -44,7 +44,6 @@ const findRelevantInqueries = async (req, res) => {
         inspectorId: req.params.inspectorId,
       },
       {
-        _id: 0,
         inquiryType: 1,
         description: 1,
         userName: 1,
