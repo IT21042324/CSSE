@@ -3,11 +3,15 @@ import { View, Text, FlatList, StyleSheet } from "react-native";
 import { MakeApiCall } from "../../api/apiCalls";
 import { getDateFromCheckInDate } from "../../miscellaneous/helper";
 import { Picker } from "@react-native-picker/picker";
+import { ReadInqText } from "../../contants/strings";
 
+const all = "all";
+const AllLabel = "All";
+const Other = "Other";
 export const ReadInquiries = ({ navigation }) => {
   const { findInqsByInspectorId } = MakeApiCall();
   const [inquiries, setInquiries] = useState([]);
-  const [selectedInquiryType, setSelectedInquiryType] = useState("all");
+  const [selectedInquiryType, setSelectedInquiryType] = useState(all);
 
   useEffect(() => {
     async function fetchInquiries() {
@@ -23,7 +27,7 @@ export const ReadInquiries = ({ navigation }) => {
       <Text style={[styles.cell, styles.inquiryType]}>{item.inquiryType}</Text>
       <Text style={[styles.cell, styles.description]}>{item.description}</Text>
       <Text style={[styles.cell, styles.userName]}>{item.userName}</Text>
-      {item.inquiryType === "penalty" && (
+      {item.inquiryType === ReadInqText.penalty && (
         <Text style={[styles.cell, styles.penaltyAmount]}>
           {item.penaltyAmount}
         </Text>
@@ -35,37 +39,46 @@ export const ReadInquiries = ({ navigation }) => {
   );
 
   const hasPenaltyInquiries = inquiries?.some(
-    (item) => item.inquiryType === "penalty"
+    (item) => item.inquiryType === ReadInqText.penalty
   );
 
   const filteredInquiries =
-    selectedInquiryType === "all"
+    selectedInquiryType === all
       ? inquiries
-      : inquiries.filter((item) => item.inquiryType === selectedInquiryType);
+      : inquiries?.filter((item) => item.inquiryType === selectedInquiryType);
 
   return (
     <View style={styles.container}>
       <View style={styles.filterContainer}>
-        <Text style={styles.filterLabel}>Filter by Inquiry Type:</Text>
+        <Text style={styles.filterLabel}>
+          {ReadInqText.filterByInquiryType}
+        </Text>
         <Picker
           selectedValue={selectedInquiryType}
           onValueChange={(itemValue) => setSelectedInquiryType(itemValue)}
           style={styles.picker}
         >
-          <Picker.Item label="All" value="all" />
-          <Picker.Item label="Penalty" value="penalty" />
-          <Picker.Item label="Other" value="other" />
+          <Picker.Item label={AllLabel} value={all} />
+          <Picker.Item
+            label={ReadInqText.penalty}
+            value={ReadInqText.penalty}
+          />
+          <Picker.Item label={Other} value={ReadInqText.inquiry} />
         </Picker>
       </View>
       <View style={styles.header}>
         <Text style={[styles.headerText, styles.inquiryType]}>
-          Inquiry Type
+          {ReadInqText.inquiryType}
         </Text>
-        <Text style={[styles.headerText, styles.description]}>Description</Text>
-        <Text style={[styles.headerText, styles.userName]}>User Name</Text>
+        <Text style={[styles.headerText, styles.description]}>
+          {ReadInqText.description}
+        </Text>
+        <Text style={[styles.headerText, styles.userName]}>
+          {ReadInqText.userName}
+        </Text>
         {hasPenaltyInquiries && (
           <Text style={[styles.headerText, styles.penaltyAmount]}>
-            Penalty Amount
+            {ReadInqText.penaltyAmount}
           </Text>
         )}
         <Text style={[styles.headerText, styles.createdAt]}>Created On</Text>

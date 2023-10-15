@@ -79,7 +79,7 @@ export const MakeApiCall = () => {
     findInqsByInspectorId: async function () {
       try {
         const { data } = await axios.get(
-          `${BACKENDURL}/api/inquiry/${user._id}}`
+          `${BACKENDURL}/api/inquiry/inspector/${user._id}`
         );
         return data;
       } catch (err) {

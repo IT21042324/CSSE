@@ -1,5 +1,5 @@
 import * as Font from "expo-font";
-import AppLoading from "expo-app-loading";
+import { useFonts } from "expo-font";
 import { useState } from "react";
 import { SafeAreaView } from "react-native";
 import { ThemeProvider } from "react-native-elements";
@@ -10,38 +10,31 @@ import Navigator from "./routes/inspectorNavigation";
 import { globalStyles } from "./styles/global";
 import { UserContextProvider } from "./context/user";
 
-const getFonts = () =>
-  Font.loadAsync({
+const App = () => {
+  const [fontsLoaded] = useFonts({
     "ubuntu-regular": require("./assets/fonts/Ubuntu-Regular.ttf"),
     "ubuntu-bold": require("./assets/fonts/Ubuntu-Bold.ttf"),
     "arOneSans-regular": require("./assets/fonts/AROneSans-Regular.ttf"),
   });
 
-export default function App() {
-  const [fontsLoaded, setFontsLoaded] = useState(false);
-
-  if (fontsLoaded) {
-    return (
-      <SafeAreaView style={globalStyles.container}>
-        <RapiLayout>
-          <MenuProvider>
-            <ThemeProvider>
-              <UserContextProvider>
-                <Navigator />
-                <Toast />
-              </UserContextProvider>
-            </ThemeProvider>
-          </MenuProvider>
-        </RapiLayout>
-      </SafeAreaView>
-    );
-  } else {
-    return (
-      <AppLoading
-        startAsync={getFonts}
-        onFinish={() => setFontsLoaded(true)}
-        onError={(error) => console.error(error)}
-      />
-    );
+  if (!fontsLoaded) {
+    return null;
   }
-}
+
+  return (
+    <SafeAreaView style={globalStyles.container}>
+      <RapiLayout>
+        <MenuProvider>
+          <ThemeProvider>
+            <UserContextProvider>
+              <Navigator />
+              <Toast />
+            </UserContextProvider>
+          </ThemeProvider>
+        </MenuProvider>
+      </RapiLayout>
+    </SafeAreaView>
+  );
+};
+
+export default App;

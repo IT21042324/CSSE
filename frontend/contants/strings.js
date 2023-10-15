@@ -35,6 +35,17 @@ export const ScreenKey = {
   ReadInquiries: "ReadInquiries",
 };
 
+export const ReadInqText = {
+  penalty: "Penalty",
+  inquiry: "Inquiry",
+  filterByInquiryType: "Filter by Inquiry Type:",
+  description: "Description",
+  userName: "User Name",
+  penaltyAmount: "Penalty Amount",
+  inquiryType: "Inquiry Type",
+  penaltyAmount: "Penalty Amount",
+};
+
 export const ScanQRPageText = {
   ScanQrBtnText: "Scan QR",
   closeScannerBtnText: "Close Scanner",
