@@ -11,12 +11,16 @@ const inquirySchema = new Schema(
       type: String,
       required: true,
     },
-    userId: {
-      type: Schema.Types.ObjectId,
-      ref: "User",
+    userName: {
+      type: String,
+      required: true,
     },
     startingPoint: {
       type: String,
+    },
+    inspectorId: {
+      type: Schema.Types.ObjectId,
+      ref: "User",
     },
   },
   { timestamps: true }
