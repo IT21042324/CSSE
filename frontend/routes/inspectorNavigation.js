@@ -9,8 +9,12 @@ import PurchaseCredits from "../screen/inspector/purchaseCredits";
 import ScanToken from "../screen/inspector/scanToken";
 import { ViewAllocation } from "../screen/inspector/viewAllocation";
 import { ViewRoute } from "../screen/inspector/viewRoute";
+import Welcome from "../screen/welcome";
 
 const screens = {
+  Welcome: {
+    screen: Welcome,
+  },
   Inspection: {
     screen: inspectorLandingScreen,
     navigationOptions: {

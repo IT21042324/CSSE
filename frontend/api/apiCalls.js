@@ -51,5 +51,27 @@ export const MakeApiCall = () => {
         return err;
       }
     },
+    signup: async function (insertionData) {
+      try {
+        const info = await axios.post(
+          `${BACKENDURL}/api/user/signup`,
+          insertionData
+        );
+        return info.data;
+      } catch (err) {
+        console.log(err);
+      }
+    },
+    login: async function (insertionData) {
+      try {
+        const info = await axios.post(
+          `${BACKENDURL}/api/user/login`,
+          insertionData
+        );
+        return info.data;
+      } catch (err) {
+        console.log(err);
+      }
+    },
   };
 };

@@ -8,6 +8,7 @@ import { Layout as RapiLayout } from "react-native-rapi-ui";
 import Toast from "react-native-toast-message";
 import Navigator from "./routes/inspectorNavigation";
 import { globalStyles } from "./styles/global";
+import { UserContextProvider } from "./context/user";
 
 const getFonts = () =>
   Font.loadAsync({
@@ -25,8 +26,10 @@ export default function App() {
         <RapiLayout>
           <MenuProvider>
             <ThemeProvider>
-              <Navigator />
-              <Toast />
+              <UserContextProvider>
+                <Navigator />
+                <Toast />
+              </UserContextProvider>
             </ThemeProvider>
           </MenuProvider>
         </RapiLayout>
