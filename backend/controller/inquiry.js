@@ -37,8 +37,30 @@ const findAllInqs = async (req, res) => {
   }
 };
 
+const findRelevantInqueries = async (req, res) => {
+  try {
+    const inqueries = await inqModel.find(
+      {
+        inspectorId: req.params.inspectorId,
+      },
+      {
+        _id: 0,
+        inquiryType: 1,
+        description: 1,
+        userName: 1,
+        penaltyAmount: 1,
+        createdAt: 1,
+      }
+    );
+    res.status(200).json(inqueries);
+  } catch (err) {
+    res.status(400).json({ message: err.message });
+  }
+};
+
 module.exports = {
   createInquiry,
   findInqById,
   findAllInqs,
+  findRelevantInqueries,
 };
