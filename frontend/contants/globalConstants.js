@@ -104,6 +104,7 @@ export const colorVariants = {
   available: "#93C572",
   helonica: "#DB3E79",
   occupied: "#DB3E79",
+  lightCoral: "#f1807e",
 };
 
 export const size = {
