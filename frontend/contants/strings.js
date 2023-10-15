@@ -38,6 +38,11 @@ export const ScanQRPageText = {
   tokenValidationFailureMessage: "Token is Invalid",
   issueInquiry: "Issue an Inquiry",
 };
+export const inquiryFormTexts = {
+  inquirySubmittedTextMessage: "Inquiry Submitted",
+  inquiryFormFailureToast:
+    "Please validate the inquiry details before submission",
+};
 
 export const PurchaseCreditsText = {
   userName: "User Name",

@@ -26,10 +26,13 @@ import {
 } from "../../contants/globalConstants";
 import {
   inquiryFormText,
+  inquiryFormTexts,
   inquirySelectionOptions,
 } from "../../contants/strings";
 import { globalStyles } from "../../styles/global";
 import { DropDown } from "../dropDownPicker";
+import { MakeApiCall } from "../../api/apiCalls";
+import Toast from "react-native-toast-message";
 
 const StoreSchema = yup.object({
   penaltyAmount: yup
@@ -48,7 +51,28 @@ export const InquryForm = ({ dataFromQR, formHandler }) => {
     setInquiryType(val);
   };
 
-  const onSubmitHandler = async (values) => {};
+  const { makeInquiry } = MakeApiCall();
+
+  const onSubmitHandler = async (values) => {
+    const data = await makeInquiry({
+      ...values,
+      userName: dataFromQR.userName,
+      startingPoint: dataFromQR.startingPoint,
+      inspectorId: "652aec3ccea326f999410998",
+    });
+
+    if (data) {
+      Toast.show({
+        type: "success",
+        text1: inquiryFormTexts.inquirySubmittedTextMessage,
+      });
+    } else {
+      Toast.show({
+        type: "errror",
+        text1: inquiryFormTexts.inquiryFormFailureToast,
+      });
+    }
+  };
 
   return (
     <Formik

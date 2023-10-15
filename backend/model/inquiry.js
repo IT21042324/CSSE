@@ -22,6 +22,9 @@ const inquirySchema = new Schema(
       type: Schema.Types.ObjectId,
       ref: "User",
     },
+    penaltyAmount: {
+      type: String,
+    },
   },
   { timestamps: true }
 );

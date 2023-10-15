@@ -36,5 +36,18 @@ export const MakeApiCall = () => {
         return err;
       }
     },
+    makeInquiry: async (insertionData) => {
+      try {
+        const info = await axios.post(
+          `${BACKENDURL}/api/inquiry/`,
+          insertionData
+        );
+
+        return info.data;
+      } catch (err) {
+        console.log(err);
+        return err;
+      }
+    },
   };
 };
