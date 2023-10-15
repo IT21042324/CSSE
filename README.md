@@ -10,7 +10,7 @@ The project is built using the MERN stack, which includes:
 
 - MongoDB: A cross-platform document-oriented database that stores data in JSON-like format.
 - Express: A web framework for Node.js that provides features for building web applications and APIs.
-- React: A library for building user interfaces using components.
+- React/React Native: A library for building user interfaces using components.
 - Node.js: A runtime environment that executes JavaScript code outside of a web browser.
 
 ## Group Members
