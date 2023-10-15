@@ -133,6 +133,7 @@ export const position = {
   spaceBetween: "space-between",
   flexEnd: "flex-end",
   right: "right",
+  left: "left",
   flexStart: "flex-start",
 };
 

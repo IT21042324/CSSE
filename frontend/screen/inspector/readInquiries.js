@@ -4,11 +4,12 @@ import { MakeApiCall } from "../../api/apiCalls";
 import { getDateFromCheckInDate } from "../../miscellaneous/helper";
 import { Picker } from "@react-native-picker/picker";
 import { ReadInqText } from "../../contants/strings";
+import { styles } from "../../styles/readInqueries";
 
 const all = "all";
 const AllLabel = "All";
 const Other = "Other";
-export const ReadInquiries = ({ navigation }) => {
+export const ReadInquiries = () => {
   const { findInqsByInspectorId } = MakeApiCall();
   const [inquiries, setInquiries] = useState([]);
   const [selectedInquiryType, setSelectedInquiryType] = useState(all);
@@ -92,72 +93,3 @@ export const ReadInquiries = ({ navigation }) => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 16,
-    backgroundColor: "#f5f5f5",
-  },
-  filterContainer: {
-    flexDirection: "row",
-    alignItems: "center",
-    marginBottom: 8,
-  },
-  filterLabel: {
-    marginRight: 8,
-  },
-  picker: {
-    flex: 1,
-  },
-  header: {
-    flexDirection: "row",
-    borderBottomWidth: 1,
-    borderBottomColor: "#ccc",
-    marginBottom: 8,
-    backgroundColor: "#fff",
-  },
-  headerText: {
-    flex: 1,
-    fontWeight: "bold",
-    textAlign: "center",
-    paddingVertical: 8,
-  },
-  inquiryType: {
-    textAlign: "left",
-    flex: 2,
-  },
-  description: {
-    textAlign: "left",
-    flex: 3,
-  },
-  userName: {
-    textAlign: "left",
-    flex: 2,
-  },
-  penaltyAmount: {
-    textAlign: "right",
-    flex: 2,
-    color: "#f00",
-    fontWeight: "bold",
-  },
-  createdAt: {
-    textAlign: "right",
-    flex: 2,
-  },
-  row: {
-    flexDirection: "row",
-    borderBottomWidth: 1,
-    borderBottomColor: "#ccc",
-    paddingVertical: 8,
-    backgroundColor: "#fff",
-  },
-  cell: {
-    flex: 1,
-    textAlign: "center",
-    paddingVertical: 8,
-  },
-  contentContainer: {
-    flexGrow: 1,
-  },
-});
