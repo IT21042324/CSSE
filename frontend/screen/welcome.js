@@ -1,15 +1,16 @@
 import React, { useState } from "react";
 import {
-  StyleSheet,
+  ActivityIndicator,
   Text,
   TextInput,
   TouchableOpacity,
   View,
-  ActivityIndicator,
 } from "react-native";
-import { UseUserContext } from "../useHooks/user";
-import { MakeApiCall } from "../api/apiCalls";
 import Toast from "react-native-toast-message";
+import { MakeApiCall } from "../api/apiCalls";
+import { UseUserContext } from "../useHooks/user";
+import { welcomeText } from "../contants/strings";
+import { styles } from "../styles/welcome";
 
 export default function Welcome({ navigation }) {
   const [userName, setUsername] = useState("");
@@ -34,13 +35,13 @@ export default function Welcome({ navigation }) {
 
       if (userInfo.userType === "inspector") {
         navigation.navigate("Inspection");
-        showSuccessToast("Login Successful");
+        showSuccessToast(welcomeText.loginSuccessToast);
       } else if (userInfo.userType === "normalUser") {
         navigation.navigate("Home");
-        showSuccessToast("Login Successful");
+        showSuccessToast(welcomeText.loginSuccessToast);
       }
     } else {
-      showErrorToast("Invalid username or password");
+      showErrorToast(welcomeText.loginErrorToast);
     }
   };
 
@@ -61,10 +62,10 @@ export default function Welcome({ navigation }) {
 
       if (userType === "inspector") {
         navigation.navigate("Inspection");
-        showSuccessToast("Sign Up Successful");
+        showSuccessToast(welcomeText.signUpSuccessToast);
       } else if (userType === "normalUser") {
         navigation.navigate("Home");
-        showSuccessToast("Sign Up Successful");
+        showSuccessToast(welcomeText.signUpSuccessToast);
       }
     } else {
       showErrorToast(userInfo.err);
@@ -101,31 +102,33 @@ export default function Welcome({ navigation }) {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>{isSignup ? "Sign Up" : "Log In"}</Text>
+      <Text style={styles.title}>
+        {isSignup ? welcomeText.signUp : welcomeText.login}
+      </Text>
       {isSignup && (
         <TextInput
           style={styles.input}
-          placeholder="Name"
+          placeholder={welcomeText.namePlaceholder}
           value={name}
           onChangeText={setName}
         />
       )}
       <TextInput
         style={styles.input}
-        placeholder="Username"
+        placeholder={welcomeText.userNamePlaceholder}
         value={userName}
         onChangeText={setUsername}
       />
       <TextInput
         style={styles.input}
-        placeholder="Password"
+        placeholder={welcomeText.passwordPlaceholder}
         secureTextEntry={true}
         value={password}
         onChangeText={setPassword}
       />
       {isSignup && (
         <>
-          <Text style={styles.label}>User Type:</Text>
+          <Text style={styles.label}>{welcomeText.userTypeText}</Text>
           <View style={styles.radioGroup}>
             <TouchableOpacity
               style={[
@@ -134,7 +137,7 @@ export default function Welcome({ navigation }) {
               ]}
               onPress={() => setUserType("normalUser")}
             >
-              <Text style={styles.radioLabel}>Normal User</Text>
+              <Text style={styles.radioLabel}>{welcomeText.normalUser}</Text>
             </TouchableOpacity>
             <TouchableOpacity
               style={[
@@ -143,7 +146,7 @@ export default function Welcome({ navigation }) {
               ]}
               onPress={() => setUserType("inspector")}
             >
-              <Text style={styles.radioLabel}>Inspector</Text>
+              <Text style={styles.radioLabel}>{welcomeText.inspector}</Text>
             </TouchableOpacity>
           </View>
         </>
@@ -157,87 +160,17 @@ export default function Welcome({ navigation }) {
           <ActivityIndicator size="small" color="#fff" />
         ) : (
           <Text style={styles.buttonText}>
-            {isSignup ? "Sign Up" : "Log In"}
+            {isSignup ? welcomeText.signUp : welcomeText.login}
           </Text>
         )}
       </TouchableOpacity>
       <TouchableOpacity style={styles.toggleButton} onPress={toggleSignup}>
         <Text style={styles.toggleButtonText}>
           {isSignup
-            ? "Already have an account? Log In"
-            : "Don't have an account? Sign Up"}
+            ? welcomeText.alreadyHaveAnAccountText
+            : welcomeText.dontHaveAnAccountText}
         </Text>
       </TouchableOpacity>
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-    backgroundColor: "#fff",
-  },
-  title: {
-    fontSize: 24,
-    fontWeight: "bold",
-    marginBottom: 24,
-  },
-  input: {
-    borderWidth: 1,
-    borderColor: "#ccc",
-    borderRadius: 4,
-    padding: 8,
-    marginVertical: 8,
-    width: "80%",
-  },
-  label: {
-    fontSize: 16,
-    fontWeight: "bold",
-    marginVertical: 8,
-    alignSelf: "flex-start",
-    marginLeft: "10%",
-  },
-  radioGroup: {
-    flexDirection: "row",
-    justifyContent: "space-around",
-    width: "100%",
-    marginBottom: 16,
-    padding: 10,
-  },
-  radioButton: {
-    borderWidth: 1,
-    borderColor: "#ccc",
-    borderRadius: 4,
-    padding: 8,
-    alignItems: "center",
-    width: "40%",
-  },
-  radioButtonSelected: {
-    backgroundColor: "#ccc",
-  },
-  radioLabel: {
-    fontSize: 14,
-  },
-  button: {
-    backgroundColor: "#007AFF",
-    borderRadius: 4,
-    padding: 12,
-    width: "80%",
-    alignItems: "center",
-    marginTop: 16,
-  },
-  buttonText: {
-    color: "#fff",
-    fontSize: 16,
-    fontWeight: "bold",
-  },
-  toggleButton: {
-    marginTop: 16,
-  },
-  toggleButtonText: {
-    color: "#007AFF",
-    fontSize: 14,
-  },
-});

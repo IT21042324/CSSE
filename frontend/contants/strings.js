@@ -119,3 +119,24 @@ export const scannedTokenDetailsContainerText = {
   checkInTime: "Checkin Time",
   checkInDate: "Checkin Date",
 };
+
+export const inquiryText = {
+  makeInq: "Make Inquiry",
+  close: "Close",
+};
+
+export const welcomeText = {
+  loginSuccessToast: "Login Successful",
+  loginErrorToast: "Invalid username or password",
+  signUpSuccessToast: "Sign Up Successful",
+  signUp: "Sign Up",
+  login: "Login",
+  namePlaceholder: "Name",
+  userNamePlaceholder: "User Name",
+  passwordPlaceholder: "Password",
+  userTypeText: "User Type:",
+  normalUser: "Normal User",
+  inspector: "Inspector",
+  alreadyHaveAnAccountText: "Already have an account? Log In",
+  dontHaveAnAccountText: "Don't have an account? Sign Up",
+};

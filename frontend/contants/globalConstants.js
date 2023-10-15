@@ -3,6 +3,7 @@ import moment from "moment";
 
 export const padding = {
   xxxSmall: 6,
+  xxSmallInBetween: 8,
   xxSmall: 10,
   xSmall: 14,
   small: 18,
@@ -16,6 +17,7 @@ export const padding = {
 export const margin = {
   xxxxSmall: 2,
   xxxSmall: 6,
+  xxSmallInBetween: 8,
   xxSmall: 10,
   xSmall: 14,
   small: 18,
@@ -25,6 +27,7 @@ export const margin = {
   xxLarge: 36,
   xxxLarge: 50,
   formErrorText: 2,
+  tenPercent: "10%",
 };
 
 export const height = {
@@ -105,6 +108,8 @@ export const colorVariants = {
   helonica: "#DB3E79",
   occupied: "#DB3E79",
   lightCoral: "#f1807e",
+  lightGray: "#ccc",
+  deepSkyBlue: "#007AFF",
 };
 
 export const size = {
@@ -128,6 +133,7 @@ export const position = {
   spaceBetween: "space-between",
   flexEnd: "flex-end",
   right: "right",
+  flexStart: "flex-start",
 };
 
 export const widthVariants = {
@@ -136,6 +142,8 @@ export const widthVariants = {
   quarter: "25%",
   threeQuarter: "75%",
   none: "0%",
+  eightyPercent: "80%",
+  fourtyPercent: "40%",
 };
 
 export const flexDirections = {

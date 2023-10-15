@@ -7,11 +7,12 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import { PurchaseCreditsText } from "../../contants/strings";
 import Toast from "react-native-toast-message";
 import { MakeApiCall } from "../../api/apiCalls";
 import { colorVariants } from "../../contants/globalConstants";
+import { PurchaseCreditsText } from "../../contants/strings";
 import { styles } from "../../styles/purchaseCredits";
+import { UseUserContext } from "../../useHooks/user";
 
 const createInputFieldRecord = (
   keyText,
@@ -50,6 +51,8 @@ export default function PurchaseCredits({ navigation }) {
 
   const { purchaseCredits } = MakeApiCall();
 
+  const { user } = UseUserContext();
+
   const onPressHandler = async () => {
     const parsedCredits = parseInt(credits);
 
@@ -57,23 +60,22 @@ export default function PurchaseCredits({ navigation }) {
       userName,
       amount,
       credits: parsedCredits,
-      inspectorId: "652aec3ccea326f999410998",
+      inspectorId: user._id,
     });
 
-    console.log(data);
     const { updatedUserInfo } = data;
-    console.log(updatedUserInfo);
 
     setIsLoading(false);
-    navigation.navigate("Inspection");
 
-    if (updatedUserInfo)
+    if (updatedUserInfo) {
+      navigation.navigate("Inspection");
+
       Toast.show({
         type: "success",
         text1: PurchaseCreditsText.transactionSuccessToastMessage,
         text2: `${credits} Credits  Added to ${userName}`,
       });
-    else
+    } else
       Toast.show({
         type: "error",
         text1: PurchaseCreditsText.tranactionFailureToastMessage,

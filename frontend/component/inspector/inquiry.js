@@ -2,6 +2,7 @@ import React from "react";
 import { Modal, Pressable, StyleSheet, Text, View } from "react-native";
 import { colorVariants } from "../../contants/globalConstants";
 import { InquryForm } from "./inquiryForm";
+import { inquiryText } from "../../contants/strings";
 
 const ModalContent = ({
   changeVisibility,
@@ -10,14 +11,14 @@ const ModalContent = ({
 }) => {
   return (
     <View style={styles.content}>
-      <Text style={styles.title}>Update Store</Text>
+      <Text style={styles.title}>{inquiryText.makeInq}</Text>
       <InquryForm
         changeVisibility={changeVisibility}
         storeDetails={storeDetails}
         storeUpdateStatus={storeUpdateStatus}
       />
       <Pressable style={styles.buttonClose} onPress={changeVisibility}>
-        <Text style={styles.textStyle}>Close</Text>
+        <Text style={styles.textStyle}>{inquiryText.close}</Text>
       </Pressable>
     </View>
   );

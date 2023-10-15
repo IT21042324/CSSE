@@ -25,6 +25,7 @@ import { DropDown } from "../dropDownPicker";
 import { MakeApiCall } from "../../api/apiCalls";
 import Toast from "react-native-toast-message";
 import { styles } from "../../styles/inquiryForm";
+import { UseUserContext } from "../../useHooks/user";
 
 const FormSchema = yup.object({
   penaltyAmount: yup
@@ -44,30 +45,25 @@ export const InquryForm = ({ dataFromQR, formHandler, navigation }) => {
 
   const { makeInquiry } = MakeApiCall();
 
+  const { user } = UseUserContext();
+
   const onSubmitHandler = async (values) => {
     const penaltyAm = values.penaltyAmount;
-
-    console.log({
-      ...values,
-      penaltyAmount: `Rs. ${penaltyAm}`,
-      userName: dataFromQR?.userName || "sam@gmail.com",
-      startingPoint: dataFromQR.startingPoint,
-      inspectorId: "652aec3ccea326f999410998",
-      inquiryType,
-    });
 
     setShowActivityIndicator(true);
 
     const data = await makeInquiry({
       ...values,
       penaltyAmount: `Rs. ${penaltyAm}`,
-      userName: dataFromQR?.userName || "simon@gmail.com",
+      userName: dataFromQR?.userName,
       startingPoint: dataFromQR.startingPoint,
-      inspectorId: "652aec3ccea326f999410998",
+      inspectorId: user._id,
       inquiryType,
     });
 
     if (data?._id) {
+      navigation.navigate("Inspection");
+
       Toast.show({
         type: "success",
         text1: inquiryFormTexts.inquirySubmittedTextMessage,
@@ -80,8 +76,6 @@ export const InquryForm = ({ dataFromQR, formHandler, navigation }) => {
       });
       setShowActivityIndicator(false);
     }
-
-    navigation.navigate("Inspection");
   };
 
   return (
