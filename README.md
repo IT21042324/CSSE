@@ -33,4 +33,3 @@ We drew inspiration and knowledge from various sources to create this project, i
 - [React Native - A framework for building native apps using React](https://reactnative.dev/)
 - [Node.js](https://nodejs.org/)
 
-With these resources, we aimed to create a polished, efficient, and user-friendly alternative to the London Oyster booking system. Thank you for exploring our project, and we hope it inspires your imagination while showcasing the potential of the MERN stack.
