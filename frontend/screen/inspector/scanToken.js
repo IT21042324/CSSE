@@ -24,7 +24,7 @@ const createButton = (onPressHandler, btnText) => (
 );
 
 export default function ScanToken({ navigation }) {
-  const [isCameraOpen, setIsCameraOpen] = useState(false);
+  const [isCameraOpen, setIsCameraOpen] = useState(true);
   const [isQrDetailsVisible, setIsQrDetailsVisible] = useState(false);
   const [dataFromQR, setDataFromQR] = useState({});
   const [isValidInfo, setValidInfo] = useState(false);
@@ -69,13 +69,7 @@ export default function ScanToken({ navigation }) {
           <InspectorFirstHalfComponent />
           <View style={styles.qrContainer}>
             {isCameraOpen && <QrScannner onQRScanned={onQRScanned} />}
-            {!isCameraOpen && !isQrDetailsVisible && (
-              <Image
-                source={qrImage}
-                style={styles.qrImage}
-                resizeMode={resizeMode.stretch}
-              />
-            )}
+
             {!isCameraOpen && isQrDetailsVisible && (
               <ScannedTokenDetailsContainer
                 dataFromQR={dataFromQR}
@@ -83,13 +77,6 @@ export default function ScanToken({ navigation }) {
               />
             )}
           </View>
-
-          {!isCameraOpen &&
-            !isQrDetailsVisible &&
-            createButton(
-              () => qrBtnPressHandler(true),
-              ScanQRPageText.ScanQrBtnText
-            )}
 
           {isCameraOpen &&
             !isQrDetailsVisible &&
