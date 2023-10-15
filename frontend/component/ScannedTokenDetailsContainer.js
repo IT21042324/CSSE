@@ -18,8 +18,17 @@ import {
   getDateFromCheckInDate,
   getTimeFronCheckinDate,
 } from "../miscellaneous/helper";
+import { useEffect } from "react";
+import { storeSeatData } from "../asyncStorage/busAllocation";
 
-export const ScannedTokenDetailsContainer = ({ dataFromQR }) => {
+export const ScannedTokenDetailsContainer = ({ dataFromQR, isValidInfo }) => {
+  useEffect(() => {
+    async function storeBusSeatData() {
+      isValidInfo && (await storeSeatData(dataFromQR));
+    }
+    storeBusSeatData();
+  }, []);
+
   return (
     <View style={styles.userInfoContainer}>
       <View style={styles.imageAndNameContainer}>

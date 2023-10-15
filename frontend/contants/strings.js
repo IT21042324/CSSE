@@ -80,6 +80,8 @@ export const busSeatString = {
   customer: "Customer",
   startingPoint: "Starting Point",
   time: "Time",
+  occupied: "Occupied",
+  available: "Available",
 };
 
 export const distanceCaluclator = {

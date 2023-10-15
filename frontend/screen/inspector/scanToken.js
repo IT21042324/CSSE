@@ -94,7 +94,10 @@ export default function ScanToken({ navigation }) {
               />
             )}
             {!isCameraOpen && isQrDetailsVisible && (
-              <ScannedTokenDetailsContainer dataFromQR={dataFromQR} />
+              <ScannedTokenDetailsContainer
+                dataFromQR={dataFromQR}
+                isValidInfo={isValidInfo}
+              />
             )}
           </View>
 

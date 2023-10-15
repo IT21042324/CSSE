@@ -14,37 +14,49 @@ const screens = {
   Inspection: {
     screen: inspectorLandingScreen,
     navigationOptions: {
-      headerTitle: () => <Header title={screenTitles.inspection} />,
+      headerTitle: () => (
+        <Header title={screenTitles.inspection} showOptions={false} />
+      ),
     },
   },
   ValidateToken: {
     screen: ScanToken,
     navigationOptions: {
-      headerTitle: () => <Header title={screenTitles.validateToken} />,
+      headerTitle: () => (
+        <Header title={screenTitles.validateToken} showOptions={false} />
+      ),
     },
   },
   ViewAllocation: {
     screen: ViewAllocation,
     navigationOptions: {
-      headerTitle: () => <Header title={screenTitles.viewAllocation} />,
+      headerTitle: () => (
+        <Header title={screenTitles.viewAllocation} showOptions={true} />
+      ),
     },
   },
   ViewRoute: {
     screen: ViewRoute,
     navigationOptions: {
-      headerTitle: () => <Header title={screenTitles.viewRoute} />,
+      headerTitle: () => (
+        <Header title={screenTitles.viewRoute} showOptions={false} />
+      ),
     },
   },
   DistanceCalculator: {
     screen: DistanceCalculator,
     navigationOptions: {
-      headerTitle: () => <Header title={screenTitles.distanceCaluclator} />,
+      headerTitle: () => (
+        <Header title={screenTitles.distanceCaluclator} showOptions={false} />
+      ),
     },
   },
   PurchaseCredits: {
     screen: PurchaseCredits,
     navigationOptions: {
-      headerTitle: () => <Header title={screenTitles.purchaseCredits} />,
+      headerTitle: () => (
+        <Header title={screenTitles.purchaseCredits} showOptions={false} />
+      ),
     },
   },
 };

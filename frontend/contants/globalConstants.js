@@ -100,6 +100,10 @@ export const colorVariants = {
   whiteSmoke: "#f5f5f5",
   turquesa: "#468499",
   lightGray: "#E6E6E3",
+  pistachio: "#93C572",
+  available: "#93C572",
+  helonica: "#DB3E79",
+  occupied: "#DB3E79",
 };
 
 export const size = {

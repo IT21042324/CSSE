@@ -1,4 +1,11 @@
-import { Image, StyleSheet, Text, View } from "react-native";
+import {
+  Alert,
+  Image,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import { logoImage } from "../../assets/imageIndex";
 import {
   flexDirections,
@@ -8,13 +15,27 @@ import {
   width,
 } from "../../contants/globalConstants";
 import { globalStyles } from "../../styles/global";
+import { optionsIcon } from "../../contants/components";
+import { clearSeatAllocations } from "../../asyncStorage/busAllocation";
 
-export const Header = ({ title }) => {
+export const Header = ({ title, showOptions }) => {
+  const clearAllAllocation = async () => {
+    Alert.alert();
+    await clearSeatAllocations();
+  };
+
   return (
     <View style={styles.header}>
-      <View style={styles.logoContainer}>
-        <Image source={logoImage} style={styles.logo} />
-      </View>
+      {showOptions ? (
+        <View style={styles.logoContainer}>{optionsIcon}</View>
+      ) : (
+        <TouchableOpacity
+          style={styles.logoContainer}
+          onPress={clearAllAllocation}
+        >
+          <Image source={logoImage} style={styles.logo} />
+        </TouchableOpacity>
+      )}
       <View>
         <Text style={globalStyles.titleText}>{title}</Text>
       </View>

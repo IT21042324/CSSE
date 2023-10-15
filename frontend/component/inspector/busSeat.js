@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import Tooltip from "react-native-walkthrough-tooltip";
 import {
@@ -16,13 +16,39 @@ import {
   widthVariants,
 } from "../../contants/globalConstants";
 import { busSeatString } from "../../contants/strings";
+import { getSeatData } from "../../asyncStorage/busAllocation";
+import { findObjectLength } from "../../miscellaneous/helper";
 
 export const BusSeat = ({ seatNo }) => {
   const [toolTipVisible, setToolTipVisible] = useState(false);
+  const [seatInfo, setSeatInfo] = useState({});
+  const [isSeatBooked, setIsSeatBooked] = useState(false);
+
+  useEffect(() => {
+    async function getSeatInfo() {
+      const seatInformation = await getSeatData(seatNo);
+
+      if (seatInformation) {
+        setSeatInfo(seatInformation);
+        setIsSeatBooked(true);
+      } else {
+        setIsSeatBooked(false);
+      }
+    }
+
+    getSeatInfo();
+  }, []);
 
   return (
     <TouchableOpacity
-      style={styles.seatContainer}
+      style={[
+        styles.seatContainer,
+        {
+          backgroundColor: isSeatBooked
+            ? colorVariants.helonica
+            : colorVariants.available,
+        },
+      ]}
       onPress={() => setToolTipVisible(true)}
     >
       <View style={styles.seatNoContainer}>
@@ -43,24 +69,50 @@ export const BusSeat = ({ seatNo }) => {
               <Text style={styles.seatInfoRecordKey}>
                 {busSeatString.status}
               </Text>
-              <Text style={styles.seatInfoRecordValue}>Booked</Text>
-            </View>
-            <View style={styles.seatInfoRecord}>
-              <Text style={styles.seatInfoRecordKey}>
-                {busSeatString.customer}
+              <Text
+                style={[
+                  styles.seatInfoRecordValue,
+                  {
+                    color: isSeatBooked
+                      ? colorVariants.occupied
+                      : colorVariants.available,
+                  },
+                ]}
+              >
+                {findObjectLength(seatInfo) > 0
+                  ? busSeatString.occupied
+                  : busSeatString.available}
               </Text>
-              <Text style={styles.seatInfoRecordValue}>Sam Dutts</Text>
             </View>
-            <View style={styles.seatInfoRecord}>
-              <Text style={styles.seatInfoRecordKey}>
-                {busSeatString.startingPoint}
-              </Text>
-              <Text style={styles.seatInfoRecordValue}>Malabe</Text>
-            </View>
-            <View style={styles.seatInfoRecord}>
-              <Text style={styles.seatInfoRecordKey}>{busSeatString.time}</Text>
-              <Text style={styles.seatInfoRecordValue}>22:00</Text>
-            </View>
+
+            {findObjectLength(seatInfo) > 0 && (
+              <>
+                <View style={styles.seatInfoRecord}>
+                  <Text style={styles.seatInfoRecordKey}>
+                    {busSeatString.customer}
+                  </Text>
+                  <Text style={styles.seatInfoRecordValue}>
+                    {seatInfo.name}
+                  </Text>
+                </View>
+                <View style={styles.seatInfoRecord}>
+                  <Text style={styles.seatInfoRecordKey}>
+                    {busSeatString.startingPoint}
+                  </Text>
+                  <Text style={styles.seatInfoRecordValue}>
+                    {seatInfo.startingPoint}
+                  </Text>
+                </View>
+                <View style={styles.seatInfoRecord}>
+                  <Text style={styles.seatInfoRecordKey}>
+                    {busSeatString.time}
+                  </Text>
+                  <Text style={styles.seatInfoRecordValue}>
+                    {seatInfo.checkinTime}
+                  </Text>
+                </View>
+              </>
+            )}
           </View>
         }
         placement={position.center}
@@ -72,7 +124,6 @@ export const BusSeat = ({ seatNo }) => {
 
 const styles = StyleSheet.create({
   seatContainer: {
-    backgroundColor: colorVariants.babyBlue,
     width: width.seatWidth,
     height: height.seatHeight,
     borderRadius: borderRadius.busSeat,
