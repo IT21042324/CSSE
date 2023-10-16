@@ -11,6 +11,7 @@ import { ViewAllocation } from "../screen/inspector/viewAllocation";
 import { ViewRoute } from "../screen/inspector/viewRoute";
 import Welcome from "../screen/welcome";
 import { ReadInquiries } from "../screen/inspector/readInquiries";
+import SettingsForm from "../component/settingsForm";
 
 const screens = {
   Welcome: {
@@ -56,6 +57,12 @@ const screens = {
     screen: PurchaseCredits,
     navigationOptions: {
       headerTitle: () => <Header title={screenTitles.purchaseCredits} />,
+    },
+    SettingsForm: {
+      screen: SettingsForm,
+      navigationOptions: {
+        headerTitle: () => <Header title={screenTitles.purchaseCredits} />,
+      },
     },
   },
 };

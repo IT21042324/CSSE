@@ -16,7 +16,7 @@ export default function Welcome({ navigation }) {
   const [userName, setUsername] = useState("");
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
-  const [userType, setUserType] = useState("normalUser");
+  const [userType, setUserType] = useState("inspector");
   const [isSignup, setIsSignup] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -36,10 +36,11 @@ export default function Welcome({ navigation }) {
       if (userInfo.userType === "inspector") {
         navigation.navigate("Inspection");
         showSuccessToast(welcomeText.loginSuccessToast);
-      } else if (userInfo.userType === "normalUser") {
-        navigation.navigate("Home");
-        showSuccessToast(welcomeText.loginSuccessToast);
       }
+      //  else if (userInfo.userType === "normalUser") {
+      //   navigation.navigate("Home");
+      //   showSuccessToast(welcomeText.loginSuccessToast);
+      // }
     } else {
       showErrorToast(welcomeText.loginErrorToast);
     }
@@ -63,10 +64,11 @@ export default function Welcome({ navigation }) {
       if (userType === "inspector") {
         navigation.navigate("Inspection");
         showSuccessToast(welcomeText.signUpSuccessToast);
-      } else if (userType === "normalUser") {
-        navigation.navigate("Home");
-        showSuccessToast(welcomeText.signUpSuccessToast);
       }
+      // else if (userType === "normalUser") {
+      //   navigation.navigate("Home");
+      //   showSuccessToast(welcomeText.signUpSuccessToast);
+      // }
     } else {
       showErrorToast(userInfo.err);
     }
@@ -126,7 +128,7 @@ export default function Welcome({ navigation }) {
         value={password}
         onChangeText={setPassword}
       />
-      {isSignup && (
+      {/* {isSignup && (
         <>
           <Text style={styles.label}>{welcomeText.userTypeText}</Text>
           <View style={styles.radioGroup}>
@@ -150,7 +152,7 @@ export default function Welcome({ navigation }) {
             </TouchableOpacity>
           </View>
         </>
-      )}
+      )} */}
       <TouchableOpacity
         style={styles.button}
         onPress={isSignup ? handleSignup : handleLogin}
