@@ -44,6 +44,8 @@ export const checkIfScannedQrIsValid = (qrDataAsJson) => {
 };
 
 const checkIfQrIsValid = (qrDataAsJson) => {
+  const availableCredits = parseFloat(qrDataAsJson.availableCredits);
+
   if (
     qrDataAsJson._id &&
     qrDataAsJson.userID &&
@@ -53,7 +55,8 @@ const checkIfQrIsValid = (qrDataAsJson) => {
     qrDataAsJson.startingPoint &&
     !qrDataAsJson.checkoutTime &&
     !qrDataAsJson.checkoutDate &&
-    !qrDataAsJson.endingPoint
+    !qrDataAsJson.endingPoint &&
+    availableCredits > 0
   )
     return true;
   else return false;

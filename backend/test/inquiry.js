@@ -129,13 +129,9 @@ describe("POST /api/inquiry", function () {
         .request("https://csse-bcfq.onrender.com")
         .delete("/api/inquiry/delete/" + inquiryId)
         .end(function (err, res) {
-          // Check if there is no error
           expect(err).to.be.null;
-          // Check if the response status is 200 (ok)
           expect(res).to.have.status(200);
-          // Check if the response body is an object
           expect(res.body).to.be.an("object");
-          // Check if the response body has the expected properties and values
           expect(res.body).to.have.property("_id").equal(inquiryId);
           expect(res.body).to.have.property("userName").equal("test@gmail.com");
           expect(res.body).to.have.property("inquiryType").equal("penalty");
@@ -143,7 +139,6 @@ describe("POST /api/inquiry", function () {
             .to.have.property("description")
             .equal("This is an updated test inquiry");
           expect(res.body).to.have.property("penaltyAmount").equal("Rs. 200");
-          // Call done to indicate that the test is done
           done();
         });
     });
