@@ -39,21 +39,6 @@ export const MakeApiCall = () => {
         return err;
       }
     },
-    makeInquiry: async (insertionData) => {
-      try {
-        const { data } = await axios.post(
-          `${BACKENDURL}/api/inquiry`,
-          insertionData
-        );
-
-        console.log(data);
-
-        return data;
-      } catch (err) {
-        console.log(err);
-        return err;
-      }
-    },
     signup: async function (insertionData) {
       try {
         const info = await axios.post(
@@ -84,6 +69,61 @@ export const MakeApiCall = () => {
         return data;
       } catch (err) {
         console.log(err);
+      }
+    },
+    makeInquiry: async (insertionData) => {
+      try {
+        const { data } = await axios.post(
+          `${BACKENDURL}/api/inquiry`,
+          insertionData
+        );
+
+        console.log(data);
+
+        return data;
+      } catch (err) {
+        console.log(err);
+        return err;
+      }
+    },
+    findAllInqueries: async () => {
+      try {
+        const { data } = await axios.get(`${BACKENDURL}/api/inquiry`);
+        return data;
+      } catch (err) {
+        console.log(err);
+        return err;
+      }
+    },
+    patchInqueryById: async (inqId) => {
+      try {
+        const { data } = await axios.patch(
+          `${BACKENDURL}/api/inquiry/update/${inqId}`
+        );
+        return data;
+      } catch (err) {
+        console.log(err);
+        return err;
+      }
+    },
+    deleteInquiryById: async (inqId) => {
+      try {
+        const { data } = await axios.delete(
+          `${BACKENDURL}/api/inquiry/delete/${inqId}`
+        );
+        return data;
+      } catch (err) {
+        console.log(err);
+        return err;
+      }
+    },
+    findInqeryById: async (inqId) => {
+      try {
+        const { data } = await axios.get(`${BACKENDURL}/api/inquiry/${inqId}`);
+        return data;
+      } catch (err) {
+        console.log(err);
+        return err;
       }
     },
   };

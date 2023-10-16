@@ -9,7 +9,7 @@ const createInquiry = async (req, res) => {
     if (user) {
       const inq = new inqModel(req.body);
       await inq.save();
-      res.status(200).json(inq);
+      res.status(201).json(inq);
     } else {
       throw new Error("User Not Found");
     }
@@ -57,9 +57,33 @@ const findRelevantInqueries = async (req, res) => {
   }
 };
 
+const deleteInquiryById = async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const inq = await inqModel.findByIdAndDelete(id);
+    res.status(200).json(inq);
+  } catch (err) {
+    res.status(400).json({ message: err.message });
+  }
+};
+
+const updateInquiryById = async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const inq = await inqModel.findByIdAndUpdate(id, req.body, { new: true });
+    res.status(200).json(inq);
+  } catch (err) {
+    res.status(400).json({ message: err.message });
+  }
+};
+
 module.exports = {
   createInquiry,
   findInqById,
   findAllInqs,
   findRelevantInqueries,
+  deleteInquiryById,
+  updateInquiryById,
 };
