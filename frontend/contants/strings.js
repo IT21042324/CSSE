@@ -160,4 +160,15 @@ export const welcomeText = {
   dontHaveAnAccountText: "Don't have an account? Sign Up",
 };
 
+export const settingsText = {
+  startingLocation: "Starting Location",
+  endingLocation: "Ending Location",
+  submit: "Submit",
+  invalidLocationToast: "Invalid location",
+  locationSetToast: "Location Set",
+  locationSetToastMessage:
+    'Proceed to "View travel Route" option to check route',
+  invalidLocationToastMessage: "Please verify the start and end locations",
+};
+
 export const BACKENDURL = "https://csse-bcfq.onrender.com";

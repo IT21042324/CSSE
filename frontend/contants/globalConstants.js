@@ -39,6 +39,8 @@ export const height = {
   tokenStatusContainer: 80,
   logoHeight: "280%",
   seatHeight: 50,
+
+  settingFormHeigh: 40,
 };
 
 export const width = {

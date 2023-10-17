@@ -3,6 +3,8 @@ import { View, Text, TextInput, Button, StyleSheet } from "react-native";
 import { MakeApiCall } from "../api/apiCalls";
 import { UseLocationSettingsContext } from "../useHooks/locationSettings";
 import Toast from "react-native-toast-message";
+import { settingsText } from "../contants/strings";
+import { styles } from "../styles/settingForm";
 
 export const Settings = ({ navigation }) => {
   const [startLocation, setStartLocation] = useState("");
@@ -26,56 +28,35 @@ export const Settings = ({ navigation }) => {
       navigation.navigate("Inspection");
       Toast.show({
         type: "success",
-        text1: "Location Set",
-        text2: 'Proceed to "View travel Route" option to check route',
+        text1: settingsText.locationSetToast,
+        text2: settingsText.locationSetToastMessage,
       });
     } catch (err) {
       Toast.show({
         type: "error",
-        text1: "Invalid information",
-        text2: "Please verify the start and end locations",
+        text1: settingsText.invalidLocationToast,
+        text2: settingsText.invalidLocationToastMessage,
       });
     }
   };
 
   return (
     <View style={styles.container}>
-      <Text style={styles.label}>Starting Location</Text>
+      <Text style={styles.label}>{settingsText.startingLocation}</Text>
       <TextInput
         style={styles.input}
         onChangeText={(text) => setStartLocation(text)}
         value={startLocation}
       />
 
-      <Text style={styles.label}>Ending Location</Text>
+      <Text style={styles.label}>{settingsText.endingLocation}</Text>
       <TextInput
         style={styles.input}
         onChangeText={(text) => setEndLocation(text)}
         value={endLocation}
       />
 
-      <Button title="Submit" onPress={handleSubmit} />
+      <Button title={settingsText.submit} onPress={handleSubmit} />
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 20,
-    backgroundColor: "#f5f5f5",
-  },
-  label: {
-    fontWeight: "bold",
-    marginBottom: 5,
-  },
-  input: {
-    height: 40,
-    borderColor: "gray",
-    borderWidth: 1,
-    borderRadius: 5,
-    backgroundColor: "#fff",
-    padding: 10,
-    marginBottom: 20,
-  },
-});
