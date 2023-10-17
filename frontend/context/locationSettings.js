@@ -1,27 +1,20 @@
 import React, { createContext, useReducer } from "react";
 
-export const UserContext = createContext();
+export const LocationSettingsContext = createContext();
 
-export const UserContextProvider = (props) => {
+export const LocationSettingsContextProvider = (props) => {
   const [locations, dispatch] = useReducer(reducer, {
-    location: {},
+    startingLocation: {},
+    endingLocation: {},
   });
 
   function reducer(state, action) {
     switch (action.type) {
-      case "SetUser":
-        return {
-          user: action.payload,
-        };
+      case "SetLocation":
+        return action.payload;
 
-      case "UpdateUser": {
-        return {
-          user: action.payload,
-        };
-      }
-
-      case "Logout":
-        return { user: {} };
+      case "ClearLocation":
+        return { startingLocation: {}, endingLocaion: {} };
 
       default:
         return state;
@@ -29,8 +22,8 @@ export const UserContextProvider = (props) => {
   }
 
   return (
-    <UserContext.Provider value={{ ...users, dispatch }}>
+    <LocationSettingsContext.Provider value={{ locations, dispatch }}>
       {props.children}
-    </UserContext.Provider>
+    </LocationSettingsContext.Provider>
   );
 };

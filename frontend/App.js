@@ -9,6 +9,7 @@ import Toast from "react-native-toast-message";
 import Navigator from "./routes/inspectorNavigation";
 import { globalStyles } from "./styles/global";
 import { UserContextProvider } from "./context/user";
+import { LocationSettingsContextProvider } from "./context/locationSettings";
 
 const App = () => {
   const [fontsLoaded] = useFonts({
@@ -27,8 +28,10 @@ const App = () => {
         <MenuProvider>
           <ThemeProvider>
             <UserContextProvider>
-              <Navigator />
-              <Toast />
+              <LocationSettingsContextProvider>
+                <Navigator />
+                <Toast />
+              </LocationSettingsContextProvider>
             </UserContextProvider>
           </ThemeProvider>
         </MenuProvider>

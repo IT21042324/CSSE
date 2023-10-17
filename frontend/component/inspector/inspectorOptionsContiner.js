@@ -18,6 +18,8 @@ export const InspectorOptionContainer = ({ navigation }) => {
       navigation.navigate(ScreenKey.DistanceCalculator);
     } else if (screen === screenHeadings.readInquiries) {
       navigation.navigate(ScreenKey.ReadInquiries);
+    } else if (screen === screenHeadings.Settings) {
+      navigation.navigate(ScreenKey.Settings);
     }
   };
   return (

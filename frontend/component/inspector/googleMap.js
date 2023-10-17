@@ -3,19 +3,46 @@ import React, { useEffect, useState } from "react";
 import { View } from "react-native";
 import MapView, { Marker } from "react-native-maps";
 import { styles } from "../../styles/googleMap";
+import { UseLocationSettingsContext } from "../../useHooks/locationSettings";
+import Toast from "react-native-toast-message";
 
 // Factory function to create Marker
 const createMarker = (coordinate, title) => (
   <Marker coordinate={coordinate} title={title} />
 );
 
-export default function Maps() {
+export default function Maps({ navigation }) {
+  const { locations } = UseLocationSettingsContext();
+
+  const [destinationLatitude, setDestinationLatitude] =
+    useState(6.916335790893801);
+  const [destinationLongitude, setDestinationLongitude] =
+    useState(79.9723997994159);
+
+  useEffect(() => {
+    if (
+      locations.endingLocation?.latitude &&
+      locations.endingLocation?.longitude
+    ) {
+      console.log(locations.endingLocation);
+      setDestinationLatitude(parseFloat(locations.endingLocation.latitude));
+      setDestinationLongitude(parseFloat(locations.endingLocation.longitude));
+    } else {
+      navigation.navigate("Inspection");
+      Toast.show({
+        type: "error",
+        text1: "End location not set",
+        text2: "Please set it from the App Settings",
+      });
+    }
+  }, []);
+
   const [location, setLocation] = useState(null);
 
   // Destination coordinates
   const destination = {
-    latitude: 6.916335790893801,
-    longitude: 79.9723997994159,
+    latitude: destinationLatitude,
+    longitude: destinationLongitude,
     latitudeDelta: 0.0922,
     longitudeDelta: 0.0421,
   };

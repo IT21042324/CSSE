@@ -37,10 +37,6 @@ export default function Welcome({ navigation }) {
         navigation.navigate("Inspection");
         showSuccessToast(welcomeText.loginSuccessToast);
       }
-      //  else if (userInfo.userType === "normalUser") {
-      //   navigation.navigate("Home");
-      //   showSuccessToast(welcomeText.loginSuccessToast);
-      // }
     } else {
       showErrorToast(welcomeText.loginErrorToast);
     }
@@ -65,10 +61,6 @@ export default function Welcome({ navigation }) {
         navigation.navigate("Inspection");
         showSuccessToast(welcomeText.signUpSuccessToast);
       }
-      // else if (userType === "normalUser") {
-      //   navigation.navigate("Home");
-      //   showSuccessToast(welcomeText.signUpSuccessToast);
-      // }
     } else {
       showErrorToast(userInfo.err);
     }
@@ -128,31 +120,7 @@ export default function Welcome({ navigation }) {
         value={password}
         onChangeText={setPassword}
       />
-      {/* {isSignup && (
-        <>
-          <Text style={styles.label}>{welcomeText.userTypeText}</Text>
-          <View style={styles.radioGroup}>
-            <TouchableOpacity
-              style={[
-                styles.radioButton,
-                userType === "normalUser" && styles.radioButtonSelected,
-              ]}
-              onPress={() => setUserType("normalUser")}
-            >
-              <Text style={styles.radioLabel}>{welcomeText.normalUser}</Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              style={[
-                styles.radioButton,
-                userType === "inspector" && styles.radioButtonSelected,
-              ]}
-              onPress={() => setUserType("inspector")}
-            >
-              <Text style={styles.radioLabel}>{welcomeText.inspector}</Text>
-            </TouchableOpacity>
-          </View>
-        </>
-      )} */}
+
       <TouchableOpacity
         style={styles.button}
         onPress={isSignup ? handleSignup : handleLogin}

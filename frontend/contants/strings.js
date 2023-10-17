@@ -4,6 +4,7 @@ export const inspectorLandingScreenOptions = [
   "Distance Calculator",
   "View Travel Route",
   "Read Inquiries",
+  "Settings",
 ];
 
 export const screenTitles = {
@@ -15,6 +16,7 @@ export const screenTitles = {
   distanceCaluclator: "Distance Calculator",
   purchaseCredits: "Purchase Credits",
   readInquiries: "Read Inquiries",
+  settings: "Settings",
 };
 
 export const screenHeadings = {
@@ -24,6 +26,7 @@ export const screenHeadings = {
   distanceCaluclator: "Distance Calculator",
   purchaseCredits: "Purchase Credits",
   readInquiries: "Read Inquiries",
+  Settings: "Settings",
 };
 
 export const ScreenKey = {
@@ -33,6 +36,7 @@ export const ScreenKey = {
   DistanceCalculator: "DistanceCalculator",
   PurchaseCredits: "PurchaseCredits",
   ReadInquiries: "ReadInquiries",
+  Settings: "Settings",
 };
 
 export const ReadInqText = {
@@ -155,3 +159,5 @@ export const welcomeText = {
   alreadyHaveAnAccountText: "Already have an account? Log In",
   dontHaveAnAccountText: "Don't have an account? Sign Up",
 };
+
+export const BACKENDURL = "https://csse-bcfq.onrender.com";

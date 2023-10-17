@@ -1,6 +1,6 @@
 import axios from "axios";
 import { UseUserContext } from "../useHooks/user";
-const BACKENDURL = "https://csse-bcfq.onrender.com";
+import { BACKENDURL } from "../contants/strings";
 
 export const MakeApiCall = () => {
   const { user } = UseUserContext();
@@ -124,6 +124,40 @@ export const MakeApiCall = () => {
       } catch (err) {
         console.log(err);
         return err;
+      }
+    },
+    getCoordinates: async (source, destination) => {
+      const urls = [
+        `https://geocode.maps.co/search?q=${encodeURIComponent(
+          source + ", Sri Lanka"
+        )}`,
+        `https://geocode.maps.co/search?q=${encodeURIComponent(
+          destination + ", Sri Lanka"
+        )}`,
+      ];
+
+      const requests = urls.map((url) =>
+        fetch(url).then((response) => response.json())
+      );
+
+      try {
+        const [sourceResponse, destinationResponse] = await Promise.all(
+          requests
+        );
+
+        const sourceCoordinates = {
+          latitude: sourceResponse[0].lat,
+          longitude: sourceResponse[0].lon,
+        };
+
+        const destinationCoordinates = {
+          latitude: destinationResponse[0].lat,
+          longitude: destinationResponse[0].lon,
+        };
+
+        return { sourceCoordinates, destinationCoordinates };
+      } catch (error) {
+        console.log(error);
       }
     },
   };
