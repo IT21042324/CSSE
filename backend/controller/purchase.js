@@ -67,8 +67,19 @@ const findAllPurchaseRecords = async (req, res) => {
   }
 };
 
+const deletePurchaseRecordById = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const purchase = await purchaseModel.findByIdAndDelete(id);
+    res.status(200).json(`Record ${id} is deleted successfully`);
+  } catch (err) {
+    res.status(400).json({ message: err.message });
+  }
+};
+
 module.exports = {
   makePurchase,
   findPurchaseRecordById,
   findAllPurchaseRecords,
+  deletePurchaseRecordById,
 };
