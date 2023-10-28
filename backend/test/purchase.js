@@ -97,8 +97,9 @@ describe("Inquiry controller test cases", function () {
           expect(err).to.be.null;
           expect(res).to.have.status(200);
           expect(res.text).to.equal(
-            `Record ${inquiryId} is deleted successfully`
+            `"Record ${inquiryId} is deleted successfully"`
           );
+
           done();
         });
     });
