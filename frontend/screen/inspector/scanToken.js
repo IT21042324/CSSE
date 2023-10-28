@@ -1,15 +1,10 @@
 import { useState } from "react";
-import { Image, ScrollView, Text, TouchableOpacity, View } from "react-native";
-import { qrImage } from "../../assets/imageIndex";
+import { ScrollView, Text, TouchableOpacity, View } from "react-native";
 import { ScannedTokenDetailsContainer } from "../../component/ScannedTokenDetailsContainer";
 import { InquryForm } from "../../component/inspector/inquiryForm";
 import { InspectorFirstHalfComponent } from "../../component/inspector/inspectorImage";
 import QrScannner from "../../component/qrScanner";
-import {
-  position,
-  resizeMode,
-  scanTokenPage,
-} from "../../contants/globalConstants";
+import { position, scanTokenPage } from "../../contants/globalConstants";
 import { ScanQRPageText } from "../../contants/strings";
 import {
   checkIfScannedQrIsValid,
@@ -28,11 +23,6 @@ export default function ScanToken({ navigation }) {
   const [isQrDetailsVisible, setIsQrDetailsVisible] = useState(false);
   const [dataFromQR, setDataFromQR] = useState({});
   const [isValidInfo, setValidInfo] = useState(false);
-
-  // const qrBtnPressHandler = (status) => {
-  //   setIsCameraOpen(status);
-  //   setIsQrDetailsVisible(false);
-  // };
 
   const onQRScanned = (type, data) => {
     const qrDataAsJson = convertStringToJson(data);
@@ -77,13 +67,6 @@ export default function ScanToken({ navigation }) {
               />
             )}
           </View>
-
-          {/* {isCameraOpen &&
-            !isQrDetailsVisible &&
-            createButton(
-              () => qrBtnPressHandler(false),
-              ScanQRPageText.closeScannerBtnText
-            )} */}
 
           {!isCameraOpen && isQrDetailsVisible && (
             <View style={styles.tokenStatusContainer}>
