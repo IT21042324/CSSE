@@ -50,13 +50,22 @@ export const InquryForm = ({ dataFromQR, formHandler, navigation }) => {
   const onSubmitHandler = async (values) => {
     const penaltyAm = values.penaltyAmount;
 
+    console.log({
+      ...values,
+      penaltyAmount: `Rs. ${penaltyAm}`,
+      userName: dataFromQR?.userName || "unknown",
+      startingPoint: dataFromQR.startingPoint || "unknown",
+      inspectorId: user._id,
+      inquiryType,
+    });
+
     setShowActivityIndicator(true);
 
     const data = await makeInquiry({
       ...values,
       penaltyAmount: `Rs. ${penaltyAm}`,
-      userName: dataFromQR?.userName,
-      startingPoint: dataFromQR.startingPoint,
+      userName: dataFromQR?.userName || "unknown",
+      startingPoint: dataFromQR.startingPoint || "unknown",
       inspectorId: user._id,
       inquiryType,
     });

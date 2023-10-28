@@ -29,10 +29,10 @@ export default function ScanToken({ navigation }) {
   const [dataFromQR, setDataFromQR] = useState({});
   const [isValidInfo, setValidInfo] = useState(false);
 
-  const qrBtnPressHandler = (status) => {
-    setIsCameraOpen(status);
-    setIsQrDetailsVisible(false);
-  };
+  // const qrBtnPressHandler = (status) => {
+  //   setIsCameraOpen(status);
+  //   setIsQrDetailsVisible(false);
+  // };
 
   const onQRScanned = (type, data) => {
     const qrDataAsJson = convertStringToJson(data);
@@ -78,12 +78,12 @@ export default function ScanToken({ navigation }) {
             )}
           </View>
 
-          {isCameraOpen &&
+          {/* {isCameraOpen &&
             !isQrDetailsVisible &&
             createButton(
               () => qrBtnPressHandler(false),
               ScanQRPageText.closeScannerBtnText
-            )}
+            )} */}
 
           {!isCameraOpen && isQrDetailsVisible && (
             <View style={styles.tokenStatusContainer}>
