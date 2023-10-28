@@ -30,7 +30,9 @@ export default function Welcome({ navigation }) {
 
     setIsLoading(false);
 
-    if (userInfo._id) {
+    console.log(userInfo);
+
+    if (userInfo?._id) {
       setUser(userInfo);
 
       if (userInfo.userType === "inspector") {
