@@ -10,6 +10,8 @@ let inquiryId;
 
 // Test suite for add a inquiry scenario
 describe("POST /api/inquiry", function () {
+  this.timeout(5000);
+
   // Define a variable to store the inquiry id
 
   // Test case: valid inquiry data

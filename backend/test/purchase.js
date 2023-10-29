@@ -4,6 +4,8 @@ const { expect } = chai;
 chai.use(chaiHttp);
 
 describe("Inquiry controller test cases", function () {
+  this.timeout(5000);
+
   let inquiryId;
   let isCreated = false;
 

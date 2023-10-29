@@ -9,7 +9,8 @@ const userLogin = async (req, res) => {
     res.json(user);
   } catch (err) {
     console.log(err.message);
-    res.json({ err: err.message });
+
+    res.json.status(400).send({ err: err.message });
   }
 };
 
@@ -31,7 +32,8 @@ const userSignUp = async function (req, res) {
     res.status(200).json(user);
   } catch (err) {
     console.log(err.message);
-    res.json({ err: err.message });
+
+    res.status(400).send({ err: err.message });
   }
 };
 
@@ -42,7 +44,7 @@ const getAllUsers = async function (req, res) {
     console.log(users);
     res.json(users);
   } catch (err) {
-    res.send(err.message);
+    res.status(404).send(err.message);
   }
 };
 
@@ -59,6 +61,7 @@ const updateUserName = async function (req, res) {
 
     return res.json(user);
   } catch (err) {
+    res.status(404).send(err.message);
     console.log(err.message);
   }
 };
@@ -70,7 +73,7 @@ const deleteUserById = async (req, res) => {
     res.status(200).json(data);
   } catch (err) {
     console.log(err.message);
-    res.send(err.message);
+    res.status(404).send(err.message);
   }
 };
 
@@ -78,7 +81,7 @@ const getUserById = async function (req, res) {
   const { id } = req.params;
 
   try {
-    const user = await userModel.find({ _id: id });
+    const user = await userModel.findById(id);
 
     res.status(200).json(user);
   } catch (err) {
